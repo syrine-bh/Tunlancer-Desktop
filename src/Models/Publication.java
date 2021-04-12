@@ -44,7 +44,7 @@ public class Publication {
         
     }
  
-   
+    
     
     public int getId() {
         return id;
