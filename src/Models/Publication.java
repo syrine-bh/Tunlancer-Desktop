@@ -43,7 +43,7 @@ public class Publication {
         this.localisation = localisation;
         
     }
- 
+  
    
     
     public int getId() {
