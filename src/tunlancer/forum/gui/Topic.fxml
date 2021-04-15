@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="501.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.TopicController">
+   <children>
+      <Label layoutX="487.0" layoutY="45.0" text="Titre" />
+      <Label layoutX="487.0" layoutY="105.0" text="Contenu" />
+      <TextField fx:id="tfTitre" layoutX="487.0" layoutY="71.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextArea fx:id="taContenu" layoutX="487.0" layoutY="136.0" prefHeight="228.0" prefWidth="250.0" />
+      <Button fx:id="btnvalider" layoutX="487.0" layoutY="390.0" mnemonicParsing="false" onAction="#AjouterTopic" text="Créer un topic" />
+      <Button fx:id="btnaffiche" layoutX="37.0" layoutY="390.0" mnemonicParsing="false" onAction="#AfficherTopic" text="Afficher" />
+      <TableView fx:id="TopicTable" layoutX="21.0" layoutY="45.0" prefHeight="318.0" prefWidth="453.0">
+        <columns>
+          <TableColumn fx:id="ColTitre" prefWidth="77.0" text="Titre" />
+          <TableColumn fx:id="ColContenu" prefWidth="295.0" text="Contenu" />
+            <TableColumn fx:id="ColDate" text="Date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
