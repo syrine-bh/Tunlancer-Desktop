@@ -29,6 +29,10 @@ public class Video {
         this.owner = owner;
     }
 
+    public Video(int aInt, String string, String string0, Timestamp timestamp, Users users) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId() {
         return id;
     }

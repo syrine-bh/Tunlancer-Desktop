@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Pidev.jar" size="39117" download="eager" />
+    <jar href="Pidev.jar" size="54008" download="eager" />
     <jar href="lib\javax.persistence-2.2.1.jar" size="203426" download="eager" />
     <jar href="lib\jfoenix-8.0.10.jar" size="2710207" download="eager" />
     <jar href="lib\jfoenix-9.0.10.jar" size="2432549" download="eager" />

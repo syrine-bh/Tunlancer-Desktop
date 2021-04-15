@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,7 +39,7 @@ public class ParticipationServices {
     public void create(Participation p, Video v){
 
                 long id=0;
-        String req="INSERT INTO `video`(`url`, `title`, `publish_date`, `owner`) values(?,?,?,(select id from users where nom=?))";
+        String req="INSERT INTO `video`(`url`, `title`, `publish_date`, `owner`) values(?,?,?,(select id from users where id='51'))";
         try {
             ResultSet rs = connection.createStatement().executeQuery(req);
 
@@ -71,60 +72,60 @@ public class ParticipationServices {
 
 
     }
-//    public void  delete(Video v){
-//        String req="delete from participation where video_id=?";
-//        try {
-//            pst=connection.prepareStatement(req);
-//            pst.setInt(1,v.getId());
-//
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        String req2="delete from video where id=?";
-//        try {
-//            pst=connection.prepareStatement(req2);
-//            pst.setInt(1,v.getId());
-//
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//    public void update( Video v){
-//        String req="update video set url=?,title=? where id=?";
-//        try {
-//            pst=connection.prepareStatement(req);
-//            pst.setString(1,v.getUrl());
-//            pst.setString(2,v.getTitle());
-//            pst.setInt(3,v.getId());
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    
-//        }
-//     public ObservableList<Video> getAll(Concour c){
-//      String req="select * from video inner join user on(video.owner=user.id) where video.id in(select video_id from participation where concour_id=?)";
-//      ObservableList<Video> list=FXCollections.observableArrayList();
-//      try {
-//             pst=connection.prepareStatement(req);
-//            pst.setInt(1,c.getId());
-//            rs=pst.executeQuery();
-//            
-//            while(rs.next()){
-//                
-//                list.add(new Video(rs.getInt("id"),rs.getString("url"),rs.getString("title"),rs.getTimestamp("publish_date"),  
-//                                                new Users(0, req, req, 0, req, req, req, req, true, 0, req);
-//
-////                        new Users(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))));
-//            }
-//    
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//     }
+    public void  delete(Video v){
+        String req="delete from participation where video_id=?";
+        try {
+            pst=connection.prepareStatement(req);
+            pst.setInt(1,v.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String req2="delete from video where id=?";
+        try {
+            pst=connection.prepareStatement(req2);
+            pst.setInt(1,v.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void update( Video v){
+        String req="update video set url=?,title=? where id=?";
+        try {
+            pst=connection.prepareStatement(req);
+            pst.setString(1,v.getUrl());
+            pst.setString(2,v.getTitle());
+            pst.setInt(3,v.getId());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        }
+     public ObservableList<Video> getAll(Concour c){
+      String req="select * from video inner join user on(video.owner=user.id) where video.id in(select video_id from participation where concour_id=?)";
+      ObservableList<Video> list=FXCollections.observableArrayList();
+      try {
+             pst=connection.prepareStatement(req);
+            pst.setInt(1,c.getId());
+            rs=pst.executeQuery();
+            
+            while(rs.next()){
+                
+                list.add(new Video(rs.getInt("id"),rs.getString("url"),rs.getString("title"),rs.getTimestamp("publish_date"),  
+                                                new Users(80, "hiba", "farhat", 1, "test", "test", "test", "test", true, 0, "test")));
+
+//                        new Users(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))));
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+     }
 //     public competition_participant getWinners(int vid_id){
 //      String req="select * from competition_participant "
 //              + "inner join competition on(competition.id=competition_participant.competition_id) "

@@ -8,27 +8,22 @@ package Service;
 import entities.Concour;
 import entities.Participation;
 import entities.Users;
-import entities.Users_;
-import static entities.Users_.currentConnections;
-import static entities.Users_.totalConnections;
+
 import entities.Video;
-import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.MediaView;
+
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import sun.security.pkcs11.wrapper.Functions;
 
 /**
  * FXML Controller class
@@ -41,7 +36,7 @@ public class ParticipationController {
     private Button btnParticiper;
     @FXML
     private Label participation_date;
-        @FXML
+    @FXML
     private WebView  preview;
     @FXML
     private TextField titre;
@@ -54,6 +49,8 @@ public class ParticipationController {
 //        "123456", "tunis", "freelancer", 1, "20", "femme");
     private TextField url;
     private Concour c;
+    @FXML
+    private AnchorPane participation;
      public void setConcour(Concour c) {
         this.c=c;
     }
@@ -69,13 +66,13 @@ public class ParticipationController {
             
     }
     
+    @FXML
     void participerVideo(ActionEvent event) {
         String t=titre.getText();
         String u=url.getText();
         Timestamp time= new Timestamp(System.currentTimeMillis());
 //        UsersSession s=  UserSession.instance;
-        Users owner=new Users(100, currentConnections, totalConnections, "hiba", "farhat", "200000", "hiba@esprit.tn",
-        "123456", "tunis", "freelancer", 1, "20", "femme");
+        Users owner=new Users(712, "test", "test", 1, "test", "test", "test", "test", true, 0, "test");
 
         Video v=new Video(u, t, time, owner);
         Participation p=new Participation(c, v, time, owner);
@@ -85,11 +82,11 @@ public class ParticipationController {
         ps.create(p, v);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Participation");
-            alert.setHeaderText("Participation Added Succesfully");
-            alert.setContentText("Go Back To The Homepage");
+            alert.setHeaderText("Participation Ajouté avec Succés !");
+            alert.setContentText("Retour");
 
             alert.showAndWait();
-            Stage stage = (Stage) Participation.getScene().getWindow();
+            Stage stage = (Stage) participation.getScene().getWindow();
              stage.close();
              
        
@@ -97,7 +94,7 @@ public class ParticipationController {
     }
 
     void cancel(ActionEvent event) {
-        Stage stage = (Stage) Participation.getScene().getWindow();
+        Stage stage = (Stage) participation.getScene().getWindow();
         stage.close();
 
     }

@@ -25,81 +25,43 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author Hiba
  */
-@Entity
-@Table(name = "users")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findByUser", query = "SELECT u FROM Users u WHERE u.user = :user"),
-    @NamedQuery(name = "Users.findByCurrentConnections", query = "SELECT u FROM Users u WHERE u.currentConnections = :currentConnections"),
-    @NamedQuery(name = "Users.findByTotalConnections", query = "SELECT u FROM Users u WHERE u.totalConnections = :totalConnections"),
-    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
-    @NamedQuery(name = "Users.findByNom", query = "SELECT u FROM Users u WHERE u.nom = :nom"),
-    @NamedQuery(name = "Users.findByPrenom", query = "SELECT u FROM Users u WHERE u.prenom = :prenom"),
-    @NamedQuery(name = "Users.findByTel", query = "SELECT u FROM Users u WHERE u.tel = :tel"),
-    @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
-    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
-    @NamedQuery(name = "Users.findByPays", query = "SELECT u FROM Users u WHERE u.pays = :pays"),
-    @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role"),
-    @NamedQuery(name = "Users.findByPhoto", query = "SELECT u FROM Users u WHERE u.photo = :photo"),
-    @NamedQuery(name = "Users.findByBibliography", query = "SELECT u FROM Users u WHERE u.bibliography = :bibliography"),
-    @NamedQuery(name = "Users.findByIsEnabled", query = "SELECT u FROM Users u WHERE u.isEnabled = :isEnabled"),
-    @NamedQuery(name = "Users.findBySuperAdmin", query = "SELECT u FROM Users u WHERE u.superAdmin = :superAdmin"),
-    @NamedQuery(name = "Users.findByAge", query = "SELECT u FROM Users u WHERE u.age = :age"),
-    @NamedQuery(name = "Users.findBySexe", query = "SELECT u FROM Users u WHERE u.sexe = :sexe")})
-public class Users implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Column(name = "USER")
+public class Users{
+
+   
     private String user;
-    @Basic(optional = false)
-    @Column(name = "CURRENT_CONNECTIONS")
     private long currentConnections;
-    @Basic(optional = false)
-    @Column(name = "TOTAL_CONNECTIONS")
+
     private long totalConnections;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+   
     private Integer id;
-    @Basic(optional = false)
-    @Column(name = "nom")
+    
     private String nom;
-    @Basic(optional = false)
-    @Column(name = "prenom")
+   
     private String prenom;
-    @Basic(optional = false)
-    @Column(name = "tel")
+    
     private int tel;
-    @Basic(optional = false)
-    @Column(name = "email")
+  
     private String email;
-    @Basic(optional = false)
-    @Column(name = "password")
+    
     private String password;
-    @Basic(optional = false)
-    @Column(name = "pays")
+    
     private String pays;
-    @Basic(optional = false)
-    @Column(name = "role")
+   
     private String role;
-    @Column(name = "photo")
+   
     private String photo;
-    @Column(name = "bibliography")
+ 
     private String bibliography;
-    @Basic(optional = false)
-    @Column(name = "is_enabled")
+    
     private boolean isEnabled;
-    @Column(name = "super_admin")
+
     private Integer superAdmin;
-    @Basic(optional = false)
-    @Column(name = "age")
+   
     private int age;
-    @Basic(optional = false)
-    @Column(name = "sexe")
+    
     private String sexe;
-    @OneToMany(mappedBy = "userId")
+   
     private Collection<Participation> participationCollection;
 
     public Users() {
@@ -128,6 +90,9 @@ public class Users implements Serializable {
     public Users(int i, SingularAttribute<Users, Long> currentConnections, SingularAttribute<Users, Long> totalConnections, String hiba, String farhat, String string, String hibaesprittn, String string0, String tunis, String freelancer, int i0, String string1, String femme) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    
 
     public String getUser() {
         return user;
@@ -320,8 +285,7 @@ public class Users implements Serializable {
         this.participationCollection = participationCollection;
     }
 
-    public Users(String user, Integer id, String nom, String prenom, int tel, String email, String password, String pays, String role, String photo, String bibliography, boolean isEnabled, Integer superAdmin, int age, String sexe, Collection<Participation> participationCollection) {
-        this.user = user;
+    public Users(Integer id, String nom, String prenom, int tel, String email, String password, String pays, String role, boolean isEnabled, int age, String sexe) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -330,13 +294,9 @@ public class Users implements Serializable {
         this.password = password;
         this.pays = pays;
         this.role = role;
-        this.photo = photo;
-        this.bibliography = bibliography;
         this.isEnabled = isEnabled;
-        this.superAdmin = superAdmin;
         this.age = age;
         this.sexe = sexe;
-        this.participationCollection = participationCollection;
     }
     
 }

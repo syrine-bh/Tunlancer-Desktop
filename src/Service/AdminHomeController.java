@@ -7,6 +7,7 @@ package Service;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +29,8 @@ public class AdminHomeController implements Initializable {
     private Tab gestionConcours;
     @FXML
     private Tab gestionQuiz;
+    @FXML
+    private Tab ParticiperConcours;
 
     /**
      * Initializes the controller class.
@@ -38,6 +41,8 @@ public class AdminHomeController implements Initializable {
           
            GestionConcours();
                       GestionQuiz();
+                      ParticiperConcours();
+//                      loadChart();
 
     }    
    
@@ -61,5 +66,29 @@ public class AdminHomeController implements Initializable {
         
         }
     }
-    }    
+     
+      public void ParticiperConcours () {
+        try {
+           
+            Parent node = FXMLLoader.load(getClass().getResource("/FXML/Participation.fxml"));
+            ParticiperConcours.setContent(node);
+        } catch (Exception e) {
+            e.printStackTrace();
+        
+        }
+    }
+
+//    @FXML
+//    private void loadChart() {
+//        try {
+//           
+//            Parent node = FXMLLoader.load(getClass().getResource("/FXML/StatistiquesConcours.fxml"));
+//            statsTab.setContent(node);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        
+//        }
+//    }
+     
+    }   
    

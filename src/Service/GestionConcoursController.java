@@ -7,11 +7,14 @@ package Service;
 
 import entities.Concour;
 import entities.Quiz;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -88,6 +91,10 @@ public class GestionConcoursController implements Initializable {
     private Button btback;
     @FXML
     private Button btRefresh;
+    @FXML
+    private ToggleGroup consulterTypeGroup3;
+    @FXML
+    private ToggleGroup consulterTypeGroup2;
 
     /**
      * Initializes the controller class.
@@ -190,6 +197,59 @@ public class GestionConcoursController implements Initializable {
 
     @FXML
     private void UpdateConcours(ActionEvent event) {
+        
+            boolean choix = tabListC.getSelectionModel().isEmpty();
+
+
+            if(!choix) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation de votre modification ");
+            alert.setHeaderText(null);
+            alert.setContentText("Voulez-vous vraiment de modifier cette ligne ??");
+            Optional<ButtonType> action = alert.showAndWait();
+
+            if (action.get() == ButtonType.OK) {
+
+
+                try {
+
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/FXML/UpdateConcours.fxml"));
+                    loader.load();
+
+                   Concour tab2 = tabListC.getSelectionModel().getSelectedItem();
+                 UpdateConcoursController quizC = loader.getController();
+
+
+                    quizC.text( tab2.getId() ,
+                    tab2.getSujet(), tab2.getNom(), tab2.getDescription(),tab2.getDateDebut().toLocalDate() ,
+                    tab2.getDateFin().toLocalDate() ,tab2.getImageName(),tab2.getCategorie()
+                    );
+
+                    
+                    
+        
+
+                    
+                    Parent parent = loader.getRoot();
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.initStyle(StageStyle.UTILITY);
+                    stage.show();
+
+                } catch (IOException ex) {
+                    System.out.println(ex);
+                }
+            }
+        }  else if (choix) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Selectionner");
+                alert.setHeaderText(null);
+                alert.setContentText("Selectionner une ligne ");
+                alert.showAndWait();
+            }
     }
+
 
 }
