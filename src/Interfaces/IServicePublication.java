@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface IServicePublication {
     public void ajouterPublication(Publication p) throws SQLException;
-    public void supprimerPublication(Publication p) throws SQLException;
+    public void supprimerPublication(int id) throws SQLException;
     public void modifierPublication(Publication p) throws SQLException;
     public List<Publication> afficherPublications() throws SQLException;
     public Publication getPublicationById(int id) throws SQLException; 

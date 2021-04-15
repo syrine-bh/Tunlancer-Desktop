@@ -13,11 +13,12 @@ import java.sql.SQLException;
  *
  * @author Cyrina
  */
+
 public class MaConnexion {
-    
+
     private static MaConnexion instance;
     private Connection cnx;
-    private final String URL = "jdbc:mysql://localhost:3306/tunlancer_bd";
+    private final String URL = "jdbc:mysql://localhost:3306/tunlancer_integration";
     private final String LOGIN = "root";
     private final String PASSWORD = "";
 

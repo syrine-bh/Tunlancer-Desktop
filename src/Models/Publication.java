@@ -7,6 +7,8 @@ package Models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -22,9 +24,20 @@ public class Publication {
     private String localisation;
 
 
+    private Users utilisateur;
+    private List<Reaction> reactions;
+    private List<Commentaire> commentaires;
+    private List<Signaler> signaux;
+    private List<Vues> vues;
+
+    private ImageView image_file;
     
     public Publication() {
-
+        utilisateur = new Users(utilisateur_id);
+        reactions = new ArrayList<>();
+        commentaires = new ArrayList<>();
+        signaux = new ArrayList<>();
+        vues = new ArrayList<>();
     }
 
     public Publication(int id) {
@@ -42,9 +55,52 @@ public class Publication {
         this.image_name = image_name;
         this.localisation = localisation;
         
+        utilisateur = new Users(1, "cyrine", "Ben hassine", 92047480, "syrine.benhassine@esprit.tn", "123456", "canada", "user", "cyrine.png", "bio", true, 1, 23, "femme");
+        reactions = new ArrayList<>();
+        commentaires = new ArrayList<>();
+        signaux = new ArrayList<>();
+        vues = new ArrayList<>();
     }
-  
-   
+
+
+
+    public Users getUtilisateur() {
+        return utilisateur;
+    }
+    public void setUtilisateur(Users utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public List<Reaction> getReactions() {
+        return reactions;
+    }
+    public void setReactions(List<Reaction> reactions) {
+        this.reactions = reactions;
+    }
+
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+    public void setCommentaires(List<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    public List<Signaler> getSignaux() {
+        return signaux;
+    }
+    public void setSignaux(List<Signaler> signaux) {
+        this.signaux = signaux;
+    }
+
+    public List<Vues> getVues() {
+        return vues;
+    }
+    public void setVues(List<Vues> vues) {
+        this.vues = vues;
+    }
+
+    
+    
     
     public int getId() {
         return id;
@@ -110,10 +166,12 @@ public class Publication {
             typePublication="Story";
         }
         if (archive==1) {
-             typePublication="Archivée";
+             archivePublication="Archivée";
          }
-        return "Publication :" + "id=" + id + ", description=" + description + ", type=" + typePublication + ", archive=" + typePublication + ", image_name=" + image_name + ", localisation=" + localisation ;
+        return "Publication :" + "id=" + id + ", description=" + description + ", type=" + typePublication + ", archive=" + archivePublication + ", image_name=" + image_name + ", localisation=" + localisation ;
     }
+    
+
 
     
 }
