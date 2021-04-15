@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" fx:id="Date" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tunlancer_pi.ModificationAnnonceController">
+   <children>
+      <Label layoutX="50.0" layoutY="65.0" text="nom:" />
+      <TextField fx:id="nommodif" layoutX="119.0" layoutY="61.0" />
+      <Label layoutX="32.0" layoutY="129.0" text="Description:" />
+      <TextField fx:id="Descriptionfx" layoutX="143.0" layoutY="125.0" />
+      <Label layoutX="36.0" layoutY="183.0" text="Date:" />
+      <DatePicker fx:id="date" layoutX="118.0" layoutY="179.0" />
+      <Label layoutX="36.0" layoutY="227.0" text="lieux:" />
+      <TextField fx:id="lieux" layoutX="119.0" layoutY="223.0" />
+      <Label layoutX="36.0" layoutY="280.0" text="renumertaion:" />
+      <TextField fx:id="renumtaion" layoutX="143.0" layoutY="276.0" />
+      <Button layoutX="218.0" layoutY="326.0" mnemonicParsing="false" onAction="#bntModif" text="Modifier" />
+   </children>
+</AnchorPane>
