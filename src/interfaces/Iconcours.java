@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import entities.Concour;
 import java.util.List;
 
 /**
@@ -17,5 +18,9 @@ public interface Iconcours<T> {
      public void supprimer(T t);
      public void update(T t);
      public List<T> display();
-    
+      public List<Concour> ListConcours();
+   
+    public Concour getConcours(int idC);
+//    public int getCountTask();
+    public List<Concour> searchConcourByName(String nom);
 }

@@ -31,6 +31,8 @@ public class AdminHomeController implements Initializable {
     private Tab gestionQuiz;
     @FXML
     private Tab ParticiperConcours;
+    @FXML
+    private Tab statsTab;
 
     /**
      * Initializes the controller class.
@@ -42,14 +44,14 @@ public class AdminHomeController implements Initializable {
            GestionConcours();
                       GestionQuiz();
                       ParticiperConcours();
-//                      loadChart();
+                      loadChart();
 
     }    
    
     public void GestionConcours () {
         try {
            
-            Parent node = FXMLLoader.load(getClass().getResource("/FXML/GestionConcours.fxml"));
+            Parent node = FXMLLoader.load(getClass().getResource("/GestionConcours.fxml"));
             gestionConcours.setContent(node);
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,17 +80,16 @@ public class AdminHomeController implements Initializable {
         }
     }
 
-//    @FXML
-//    private void loadChart() {
-//        try {
-//           
-//            Parent node = FXMLLoader.load(getClass().getResource("/FXML/StatistiquesConcours.fxml"));
-//            statsTab.setContent(node);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        
-//        }
-//    }
+    private void loadChart() {
+        try {
+           
+            Parent node = FXMLLoader.load(getClass().getResource("/FXML/StatistiquesConcours.fxml"));
+            statsTab.setContent(node);
+        } catch (Exception e) {
+            e.printStackTrace();
+        
+        }
+    }
      
     }   
    

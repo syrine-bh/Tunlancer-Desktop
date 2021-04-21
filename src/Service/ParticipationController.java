@@ -78,7 +78,6 @@ public class ParticipationController {
         Participation p=new Participation(c, v, time, owner);
         ParticipationServices ps= new ParticipationServices ();
         
-//        cp=p ps=pc
         ps.create(p, v);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Participation");

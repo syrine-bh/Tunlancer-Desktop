@@ -19,6 +19,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,9 +66,9 @@ public class GestionConcoursController implements Initializable {
     @FXML
     private TableColumn<Concour, String> col_categorie;
     @FXML
-    private TableColumn<Concour, String> col_dateDebut;
+    private TableColumn<Concour, Date> col_dateDebut;
     @FXML
-    private TableColumn<Concour, String> col_dateFin;
+    private TableColumn<Concour, Date> col_dateFin;
 
     Connection connection;
     ObservableList<Concour> TabViewListC = FXCollections.observableArrayList();
@@ -84,8 +86,6 @@ public class GestionConcoursController implements Initializable {
     @FXML
     private ToggleGroup consulterTypeGroup1;
     @FXML
-    private TextField tfRechercher;
-    @FXML
     private ComboBox<?> bxcategorie;
     @FXML
     private Button btback;
@@ -95,9 +95,14 @@ public class GestionConcoursController implements Initializable {
     private ToggleGroup consulterTypeGroup3;
     @FXML
     private ToggleGroup consulterTypeGroup2;
+    @FXML
+    private TextField txt_search;
+ObservableList<Concour> DataList = FXCollections.observableArrayList();
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller cla    @FXML
+    private TextField txt_search;
+ss.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -122,25 +127,51 @@ public class GestionConcoursController implements Initializable {
             this.col_nom.setCellValueFactory(new PropertyValueFactory<Concour, String>("nom"));
             this.col_sujet.setCellValueFactory(new PropertyValueFactory<Concour, String>("sujet"));
             this.col_categorie.setCellValueFactory(new PropertyValueFactory<Concour, String>("categorie"));
-            this.col_dateDebut.setCellValueFactory(new PropertyValueFactory<Concour, String>("date_debut"));
-            this.col_dateFin.setCellValueFactory(new PropertyValueFactory<Concour, String>("date_fin"));
+            this.col_dateDebut.setCellValueFactory(new PropertyValueFactory<Concour, Date>("date_debut"));
+            this.col_dateFin.setCellValueFactory(new PropertyValueFactory<Concour, Date>("date_fin"));
             this.tabListC.setItems(null);
             this.tabListC.setItems(this.TabViewListC);
 
         } catch (SQLException ex) {
             System.err.println("Error" + ex);
         }
-
+        
+//         FilteredList<Concour> filteredData = new FilteredList<>(TabViewListC, p -> true);
+//        txt_search.textProperty().addListener((observable, oldValue, newValue) -> {
+//            filteredData.setPredicate(question -> {
+//                // If filter text is empty, display all persons.
+//                if (newValue == null || newValue.isEmpty()) {
+//                    return true;
+//
+//                }
+//
+//                // Compare first name and last name of every person with filter text.
+//                String lowerCaseFilter = newValue.toLowerCase();
+//        Concour c = new Concour();
+//
+//                if (c.getNom().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true; // Filter matches first name.
+//                }
+//
+//                return false; // Does not match.
+//           
+//        });
+//
+//        // 3. Wrap the FilteredList in a SortedList.
+//        SortedList<Concour> sortedData = new SortedList<>(filteredData);
+//
+//        // 4. Bind the SortedList comparator to the TableView comparator.
+////        sortedData.comparatorProperty().bind(TabReception.comparatorProperty());
+////
+////        // 5. Add sorted (and filtered) data to the table.
+////        TabReception.setItems(sortedData);
+//
+//        });
     }
-
-    @FXML
-    private void RefreshConcours(ActionEvent event) {
-        loadTableauConcours();
-    }
-
-    @FXML
-    private void tfRechecherOnKeyReleased(KeyEvent event) {
-    }
+    
+    
+                
+    
 
     @FXML
     private void btModifierOnClick(ActionEvent event) {
@@ -250,6 +281,9 @@ public class GestionConcoursController implements Initializable {
                 alert.showAndWait();
             }
     }
-
+@FXML
+    private void RefreshConcours(ActionEvent event) {
+        loadTableauConcours();
+    }
 
 }

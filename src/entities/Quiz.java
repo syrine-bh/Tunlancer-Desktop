@@ -74,6 +74,8 @@ public class Quiz {
         this.couleur = couleur;
     }
     
-    
+//    public static createTable(){
+//        
+//    }
     
 }

@@ -6,6 +6,8 @@
 package entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -23,6 +25,9 @@ public class Concour {
     String imageName;
     String couleur;
     Boolean isVideo;
+    Timestamp created_at;
+        private ImageView img;
+
 
    
 
@@ -105,6 +110,23 @@ public class Concour {
     public void setIsVideo(Boolean isVideo) {
         this.isVideo = isVideo;
     }
+       public ImageView getImg() {
+        return img;
+    }
+
+    public void setImg(ImageView img) {
+        this.img = img;
+    }
+
+    public Timestamp getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
+    }
+
+ 
 
     public Concour() {
     }

@@ -6,6 +6,7 @@
 package Service;
 
 import com.jfoenix.controls.JFXButton;
+import entities.Concour;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -67,6 +68,7 @@ public class AjouterConcoursController implements Initializable {
     @FXML
     private void ajouterConcour(ActionEvent event) {
         try {
+
              String requette;
             requette = "INSERT INTO `concour`(`sujet`, `nom`, `description`, `date_debut`, `date_fin`,`image_name`,"
                     + " `categorie`)"
@@ -90,7 +92,6 @@ public class AjouterConcoursController implements Initializable {
             
             alert.setContentText("Concours ajouté avec succés !");
             Optional<ButtonType> action = alert.showAndWait();
-            
             System.out.println("Concours ajouté avec succés !");
             
         } catch (SQLException ex) {
