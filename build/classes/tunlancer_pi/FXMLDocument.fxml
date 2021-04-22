@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="391.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer_pi.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer_pi.FXMLDocumentController">
     <children>
         <Button fx:id="button" layoutX="143.0" layoutY="235.0" onAction="#Ajouter" text="Ajouter" />
         <Label fx:id="label" layoutX="14.0" layoutY="31.0" minHeight="16" minWidth="69" text="Nom:" />
@@ -27,16 +27,16 @@
          </opaqueInsets>
       </DatePicker>
       <Button layoutX="443.0" layoutY="313.0" mnemonicParsing="false" onAction="#Afficher" text="Afficher" />
-      <TableView fx:id="tvannonce" layoutX="288.0" layoutY="45.0" prefHeight="208.0" prefWidth="458.0">
+      <TableView fx:id="tvannonce" layoutX="298.0" layoutY="82.0" prefHeight="208.0" prefWidth="458.0">
          <columns>
             <TableColumn fx:id="FXtabNom1" prefWidth="75.0" text="Nom" />
             <TableColumn fx:id="tadescription1" prefWidth="75.0" text="description" />
             <TableColumn fx:id="tabdate" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="tablieux" prefWidth="75.0" text="lieux" />
             <TableColumn fx:id="tabrenumeration" prefWidth="82.0" text="renumeration" />
-            <TableColumn fx:id="fxAction" prefWidth="75.0" text="Action" />
+            <TableColumn fx:id="fxid" prefWidth="75.0" text="id" />
          </columns>
       </TableView>
-      <Button layoutX="545.0" layoutY="317.0" mnemonicParsing="false" onAction="#modifier" text="modifier" />
+      <Button fx:id="modifierfx" layoutX="563.0" layoutY="313.0" mnemonicParsing="false" text="modifier" />
     </children>
 </AnchorPane>

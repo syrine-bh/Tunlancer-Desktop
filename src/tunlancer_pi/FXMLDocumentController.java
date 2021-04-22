@@ -7,6 +7,7 @@ package tunlancer_pi;
 
 import Utils.MyConnection;
 import entities.Annonce;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -24,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -33,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -75,6 +78,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableView< Annonce > tvannonce;
     @FXML
+    private TableColumn<?, ?> fxAction;
+    @FXML
+    private Button modifierfx;
+    
    // private TableColumn<Annonce,Void> fxAction   = new TableColumn("");
     
    
@@ -82,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        fxid.setCellValueFactory(new PropertyValueFactory<Annonce, Integer>("id"));
          FXtabNom1.setCellValueFactory(new PropertyValueFactory<Annonce, String>("nom"));
           tadescription1.setCellValueFactory(new PropertyValueFactory<Annonce, String>("description"));
            tabdate.setCellValueFactory(new PropertyValueFactory<Annonce,Date>("Date"));
@@ -162,15 +169,15 @@ public class FXMLDocumentController implements Initializable {
                             try {
                                 root = loader.load();
                                ModificationAnnonceController pct = loader.getController();
-                                pct.setId(data.getId());
+                                
                                 pct.setNommodif(data.getNom());
                                 pct.setDate((Date) data.getDate());
                               
                                 pct.setDescriptionfx(data.getDescription());
                                 pct.setLieux(data.getLieux());
                                 pct.setRenumtaion(data.getRenumeration());
-                               
-                               // n.getScene().setRoot(root);
+                               pct.setId(data.getId());
+                                label.getScene().setRoot(root);
                             } catch (IOException ex) {
                                // Logger.getLogger(ListeEvenementController.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -278,13 +285,46 @@ public class FXMLDocumentController implements Initializable {
         return annonce;
         }
      */
-    @FXML
-    private void modifier(ActionEvent event) {
+    private void modifier() {
+        modifierfx.setOnAction(event -> {
+                          // Annonce data = getTableView().getItems().get(getIndex());
+                              FXMLLoader loader = new FXMLLoader(getClass().getResource("Listaffichage.fxml"));
        
-         Annonceservice as=new Annonceservice();
-       // Annonce a = new Annonce(Integer.parseInt( Fxnom.getText()),FXdesc.getText(), Fxlieux.getText(),Fxrenu.getText());
-  
-    JOptionPane.showMessageDialog(null,"Competence modifié");
+                              
+                            });
+       
+        
     }
+      private void getSelected(MouseEvent event) {
+         /*ObservableList<Annonce> annonce ;
+         annonce= fxlist.getSelectionModel().getSelectedItems();
+         for(Annonce ann:annonce){
+             System.out.println( "" +ann );
+                   
+         }*/
+          try {
+            int index = tvannonce.getSelectionModel().getSelectedIndex();
+
+            if (index <= -1) {
+
+                return ;
+
+            }
+            tunlancer_pi.FXMLLoader loader = new tunlancer_pi.FXMLLoader(getClass().getResource("Consulterannonce.fxml"));
+            Parent root;
+            root = loader.load();
+            ConsulterannonceController  pctC = loader.getController();
+            pctC.intData(fxid.getCellData(index), label.getScene());
+            
+            Scene scene = new Scene(root);
+            Stage primaryStage = new Stage();
+           /* primaryStage.getIcons().add(img);
+            primaryStage.setTitle(tL.getCellData(index));*/
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }  catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   }
     
 }

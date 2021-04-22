@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.ListView;
 
 /**
  *
@@ -70,7 +71,7 @@ public class Annonceservice implements Iserviceannonce{
     public int updateAnnonce(Annonce a) {
          int nbModif = 0;
    try {
-            String requete = "UPDATE annonce SET nom=?,description=? , date=? ,lieux=? ,renumeration=? , where id=?";
+            String requete = "UPDATE annonce SET nom=?,description=? , date=? ,lieux=? ,renumeration=? ,where id=?";
             PreparedStatement ps = new MyConnection().getConnection().prepareStatement(requete);
             ps.setString(1, a.getNom());
              ps.setString(2, a.getDescription());
@@ -103,9 +104,58 @@ public class Annonceservice implements Iserviceannonce{
         }
         
     }
-    }
+     public void findannonce(Annonce a) {
+         List<Annonce> ANNList = new ArrayList<>();
+        try {
+            String requete = "SELECT COUNT(a.nom),a.nom FROM annonce a,postuler p where a.id=p.annonce_id GROUP BY a.nom ";
+            Statement st = new MyConnection ().getConnection()
+                    .createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            if(rs.next()) {
+               
+            
+              
+             rs.getInt("COUNT(a.nom)");
+                rs.getString("nom");
+                /* a.setDescription(rs.getString("description"));
+                 a.setDate(rs.getDate("date"));
+                 a.setLieux(rs.getString("lieux"));
+                 a.setRenumeration(rs.getString("renumeration"));*/
 
+                ANNList.add(a);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        System.out.println( ANNList);
+       // return  ANNList;
+         
+     }
+     
+     public ListView<Annonce >  getannoncebyid(int ida) {
+        
+         List <Annonce> ANNList = new ArrayList<>();
+        try {
+            String requete = "SELECT * FROM annonce where id=" + ida;
+        
+             Statement st = new MyConnection ().getConnection()
+                    .createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                Annonce a = new Annonce();
+                a.setId(rs.getInt("id"));
+                a.setNom(rs.getString("nom"));
+                 a.setDescription(rs.getString("description"));
+                 a.setDate(rs.getDate("date"));
+                 a.setLieux(rs.getString("lieux"));
+                 a.setRenumeration(rs.getString("renumeration"));
+                 ANNList.add(a);
 
-    
-    
-
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return  (ListView<Annonce>) ANNList;
+         
+     }
+     }
