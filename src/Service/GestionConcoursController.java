@@ -5,6 +5,7 @@
  */
 package Service;
 
+import Service.Back.concours.UpdateConcoursController;
 import entities.Concour;
 import entities.Quiz;
 import java.io.IOException;
@@ -252,10 +253,10 @@ ss.
                  UpdateConcoursController quizC = loader.getController();
 
 
-                    quizC.text( tab2.getId() ,
-                    tab2.getSujet(), tab2.getNom(), tab2.getDescription(),tab2.getDateDebut().toLocalDate() ,
-                    tab2.getDateFin().toLocalDate() ,tab2.getImageName(),tab2.getCategorie()
-                    );
+//                    quizC.text( tab2.getId() ,
+//                    tab2.getSujet(), tab2.getNom(), tab2.getDescription(),tab2.getDateDebut().toLocalDate() ,
+//                    tab2.getDateFin().toLocalDate() ,tab2.getImageName(),tab2.getCategorie()
+//                    );
 
                     
                     
