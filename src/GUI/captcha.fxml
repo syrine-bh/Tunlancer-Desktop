@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CaptchaController">
+    <!--    <JFXButton fx:id="btnsignin" layoutX="432.0" layoutY="502.0" onAction="" onMouseClicked="" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #300d33; -fx-background-radius: 200; -fx-text-fill: white;" text="CREATE ACCOUNT" />
+    -->
+    <AnchorPane layoutX="-3.0" minHeight="0.0" minWidth="0.0" prefHeight="590.0" prefWidth="241.0" style="-fx-background-color: #e7dbdb;">
+        <children>
+         
+  
+        </children>
+    </AnchorPane>
+    <JFXButton fx:id="submit" layoutX="389.0" layoutY="385.0" onAction="#submit" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #130E0A; -fx-border-radius: 200; -fx-border-color: white; -fx-background-radius: 200; -fx-text-fill: white;" text="Submit" textFill="#5b4b4b">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </JFXButton>
+   <Label layoutX="358.0" layoutY="100.0" text="Please solve this captcha">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font></Label>
+   <ImageView fx:id="cap" fitHeight="150.0" fitWidth="200.0" layoutX="326.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+   <TextField fx:id="code" layoutX="359.0" layoutY="327.0" prefHeight="32.0" prefWidth="147.0" promptText="Write the code" />
+   <JFXButton fx:id="reset" layoutX="561.0" layoutY="199.0" onAction="#reseting" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: #130E0A; -fx-border-radius: 200; -fx-border-color: white; -fx-background-radius: 200; -fx-text-fill: white;" text="Reset" textFill="#5b4b4b">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </JFXButton>
+   
+          
+</AnchorPane>
