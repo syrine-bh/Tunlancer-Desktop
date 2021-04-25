@@ -22,6 +22,12 @@ public class Video {
     public Video() {
     }
 
+    public Video(String url, String title, Timestamp publish_date) {
+        this.url = url;
+        this.title = title;
+        this.publish_date = publish_date;
+    }
+
     public Video(String url, String title, Timestamp publish_date, Users owner) {
         this.url = url;
         this.title = title;

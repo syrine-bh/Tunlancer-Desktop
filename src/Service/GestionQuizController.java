@@ -105,7 +105,7 @@ public class GestionQuizController implements Initializable {
 
             while (rs.next()) {
                 TabViewList.add(
-                        new Quiz( rs.getInt("id"), rs.getString("concour_id"),rs.getString("nom"),rs.getString("nb_questions") ));
+                        new Quiz( rs.getInt("id"), rs.getInt("concour_id"),rs.getString("nom"),rs.getInt("nb_questions") ));
             }
 
 
@@ -206,9 +206,9 @@ public class GestionQuizController implements Initializable {
                  UpdateQuizController updateQuizController  = loader.getController();
 
 
-                    updateQuizController.text( tab2.getId() ,
-                    tab2.getNom() , tab2.getNb_questions() , tab2.getConcour_id()
-                    );
+//                    updateQuizController.text( tab2.getId() 
+////                    tab2.getNom() , tab2.getConcour_id() , tab2.getNb_questions()
+//                    );
 
                     Parent parent = loader.getRoot();
                     Scene scene = new Scene(parent);

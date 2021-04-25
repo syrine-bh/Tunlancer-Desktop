@@ -25,39 +25,43 @@ import javafx.collections.ObservableList;
  * @author Hiba
  */
 public class ParticipationServices {
-    
 
     private Connection connection;
     private Statement ste;
     private PreparedStatement pst;
     private ResultSet rs;
-
+// private Concour c;
+//     public void setConcour(Concour c) {
+//        this.c=c;
+//    }
     public ParticipationServices() {
-            Connection connection = MyConnection.getInstance().getCnx();}
-    
+        Connection connection = MyConnection.getInstance().getCnx();
+    }
 
-    public void create(Participation p, Video v){
+    public void create(Participation p, Video v) throws SQLException {
+        long id = 0;
+        String req;
+Concour c ;
+        req = "INSERT INTO `video`(`url`, `title`, `publish_date`, `owner`) values (?,?,?,(select id from users where id=?))";
+        Connection connection = MyConnection.getInstance().getCnx();
 
-                long id=0;
-        String req="INSERT INTO `video`(`url`, `title`, `publish_date`, `owner`) values(?,?,?,(select id from users where id='51'))";
         try {
-            ResultSet rs = connection.createStatement().executeQuery(req);
 
-            pst=connection.prepareStatement(req,Statement.RETURN_GENERATED_KEYS);
-            pst.setString(1,v.getUrl());
-            pst.setString(2,v.getTitle());
-            pst.setTimestamp(3,v.getPublish_date());
-            pst.setObject(4,v.getOwner().getNom());
+            pst = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+            pst.setString(1, v.getUrl());
+            pst.setString(2, v.getTitle());
+            pst.setTimestamp(3, v.getPublish_date());
+            pst.setObject(4, v.getOwner().getId());
             pst.executeUpdate();
-                     if (rs.next()) {
-                  id = rs.getLong(1);
-                 
-}
+            ResultSet rs = pst.getGeneratedKeys();
+            if (rs.next()) {
+                id = rs.getLong(1);
+
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String req2="INSERT INTO `participation`(`concour_id`, `video_id`, `date_participation`, `user_id`) "
-                + "values((select id from concour where id=?),(select id from video where id=?),?,(select id from user where nom=?))";
+         String req2="insert into participation(concour_id,user_id,date_participation,video_id) values((select id from concour where id=15),(select id from users where id=60),?,(select id from video where id=?))";
         try {
             pst=connection.prepareStatement(req2);
             pst.setObject(1,p.getConcourId());
@@ -69,63 +73,64 @@ public class ParticipationServices {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public void delete(Video v) {
+        String req = "delete from participation where video_id=?";
+        try {
+            pst = connection.prepareStatement(req);
+            pst.setInt(1, v.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String req2 = "delete from video where id=?";
+        try {
+            pst = connection.prepareStatement(req2);
+            pst.setInt(1, v.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Video v) {
+        String req = "update video set url=?,title=? where id=?";
+        try {
+            pst = connection.prepareStatement(req);
+            pst.setString(1, v.getUrl());
+            pst.setString(2, v.getTitle());
+            pst.setInt(3, v.getId());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
-    public void  delete(Video v){
-        String req="delete from participation where video_id=?";
-        try {
-            pst=connection.prepareStatement(req);
-            pst.setInt(1,v.getId());
 
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        String req2="delete from video where id=?";
+    public ObservableList<Video> getAll(Concour c) {
+        String req = "select * from video inner join user on(video.owner=user.id) where video.id in(select video_id from participation where concour_id=?)";
+        ObservableList<Video> list = FXCollections.observableArrayList();
         try {
-            pst=connection.prepareStatement(req2);
-            pst.setInt(1,v.getId());
+            pst = connection.prepareStatement(req);
+            pst.setInt(1, c.getId());
+            rs = pst.executeQuery();
 
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    public void update( Video v){
-        String req="update video set url=?,title=? where id=?";
-        try {
-            pst=connection.prepareStatement(req);
-            pst.setString(1,v.getUrl());
-            pst.setString(2,v.getTitle());
-            pst.setInt(3,v.getId());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    
-        }
-     public ObservableList<Video> getAll(Concour c){
-      String req="select * from video inner join user on(video.owner=user.id) where video.id in(select video_id from participation where concour_id=?)";
-      ObservableList<Video> list=FXCollections.observableArrayList();
-      try {
-             pst=connection.prepareStatement(req);
-            pst.setInt(1,c.getId());
-            rs=pst.executeQuery();
-            
-            while(rs.next()){
-                
-                list.add(new Video(rs.getInt("id"),rs.getString("url"),rs.getString("title"),rs.getTimestamp("publish_date"),  
-                                                new Users(80, "hiba", "farhat", 1, "test", "test", "test", "test", true, 0, "test")));
+            while (rs.next()) {
+
+                list.add(new Video(rs.getInt("id"), rs.getString("url"), rs.getString("title"), rs.getTimestamp("publish_date"),
+                        new Users(80, "hiba", "farhat", 1, "test", "test", "test", "test", true, 0, "test")));
 
 //                        new Users(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))));
             }
-    
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
-     }
+    }
 //     public competition_participant getWinners(int vid_id){
 //      String req="select * from competition_participant "
 //              + "inner join competition on(competition.id=competition_participant.competition_id) "

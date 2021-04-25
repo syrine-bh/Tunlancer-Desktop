@@ -131,6 +131,20 @@ public class Concour {
     public Concour() {
     }
 
+    public Concour(int id,String description, String nom, Boolean isVideo) {
+        this.id = id;
+        this.description=description;
+        this.nom = nom;
+        this.isVideo = isVideo;
+    }
+
+    public Concour(int id, String nom, Date dateDebut, Date dateFin) {
+        this.id = id;
+        this.nom = nom;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+    }
+
     public Concour(String nom, String categorie, String sujet, String description, Date dateDebut, Date dateFin, String imageName, String couleur, Boolean isVideo) {
         this.nom = nom;
         this.categorie = categorie;

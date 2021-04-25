@@ -6,12 +6,12 @@ import java.sql.* ;
 public class Quiz {
 
     private int id ;
-    private String concour_id ;
+    private int concour_id ;
     private String nom ;
-    private String nb_questions ;
+    private int nb_questions ;
     private String couleur ;
 
-    public Quiz(int id, String concour_id, String nom, String nb_questions, String couleur) {
+    public Quiz(int id, int concour_id, String nom, int nb_questions, String couleur) {
         this.id = id;
         this.concour_id = concour_id;
         this.nom = nom;
@@ -19,7 +19,7 @@ public class Quiz {
         this.couleur = couleur;
     }
 
-    public Quiz(int id, String concour_id, String nom, String nb_questions) {
+    public Quiz(int id, int concour_id, String nom, int nb_questions) {
         this.id = id;
         this.concour_id = concour_id;
         this.nom = nom;
@@ -42,11 +42,11 @@ public class Quiz {
         this.id = id;
     }
 
-    public String getConcour_id() {
+    public int getConcour_id() {
         return concour_id;
     }
 
-    public void setConcour_id(String concour_id) {
+    public void setConcour_id(int concour_id) {
         this.concour_id = concour_id;
     }
 
@@ -58,11 +58,11 @@ public class Quiz {
         this.nom = nom;
     }
 
-    public String getNb_questions() {
+    public int getNb_questions() {
         return nb_questions;
     }
 
-    public void setNb_questions(String nb_questions) {
+    public void setNb_questions(int nb_questions) {
         this.nb_questions = nb_questions;
     }
 
