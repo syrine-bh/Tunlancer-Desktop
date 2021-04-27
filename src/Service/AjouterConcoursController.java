@@ -74,7 +74,7 @@ public class AjouterConcoursController implements Initializable {
                     + " `categorie`)"
                     + "VALUES (?,?,?,?,?,?,?)";
 
-            Connection connection = MyConnection.getInstance().getCnx();
+            Connection connection = MyConnection.getInstance().getConnection();
             PreparedStatement pst = connection.prepareStatement(requette);
             pst.setString(1, tfSujet.getText());
             pst.setString(2, tfNom.getText());

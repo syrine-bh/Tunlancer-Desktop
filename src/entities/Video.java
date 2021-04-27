@@ -7,6 +7,8 @@ package entities;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+import Models.Users;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,9 +37,24 @@ public class Video {
         this.owner = owner;
     }
 
-    public Video(int aInt, String string, String string0, Timestamp timestamp, Users users) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Video(int id, String url, String title, Timestamp publish_date) {
+        this.id = id;
+        this.url = url;
+        this.title = title;
+        this.publish_date = publish_date;
     }
+    private static final Logger LOG = Logger.getLogger(Video.class.getName());
+
+    public Video(int id, String url, String title, Timestamp publish_date, Users owner) {
+        this.id = id;
+        this.url = url;
+        this.title = title;
+        this.publish_date = publish_date;
+        this.owner = owner;
+    }
+    
+
+  
 
     public int getId() {
         return id;

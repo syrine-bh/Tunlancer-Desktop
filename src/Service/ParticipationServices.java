@@ -6,6 +6,10 @@
  */
 package Service;
 
+import Models.Users;
+import Service.Front.Concours.ServiceConcours;
+import Service.Front.Concours.concoursHolder;
+import com.jfoenix.controls.JFXButton;
 import entities.Concour;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import utils.MyConnection;
 import entities.Participation;
-import entities.Users;
+import entities.Users2;
 import entities.Video;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -30,22 +34,35 @@ public class ParticipationServices {
     private Statement ste;
     private PreparedStatement pst;
     private ResultSet rs;
+    private ServiceConcours st = new ServiceConcours();
+    ObservableList<Video> list = FXCollections.observableArrayList();
+
+    Concour c;
+    concoursHolder th = concoursHolder.getINSTANCE();
 // private Concour c;
-//     public void setConcour(Concour c) {
-//        this.c=c;
-//    }
+
+    public void setConcour(Concour c) {
+        c = st.getConcours(th.getId());
+
+        this.c = c;
+    }
+
     public ParticipationServices() {
-        Connection connection = MyConnection.getInstance().getCnx();
+        Connection connection = MyConnection.getInstance().getConnection();
+
     }
 
     public void create(Participation p, Video v) throws SQLException {
+        c = st.getConcours(th.getId());
+
         long id = 0;
         String req;
-Concour c ;
+
         req = "INSERT INTO `video`(`url`, `title`, `publish_date`, `owner`) values (?,?,?,(select id from users where id=?))";
-        Connection connection = MyConnection.getInstance().getCnx();
+        Connection connection = MyConnection.getInstance().getConnection();
 
         try {
+            PreparedStatement pst = connection.prepareStatement(req);
 
             pst = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, v.getUrl());
@@ -61,14 +78,20 @@ Concour c ;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-         String req2="insert into participation(concour_id,user_id,date_participation,video_id) values((select id from concour where id=15),(select id from users where id=60),?,(select id from video where id=?))";
+        String req2 = "insert into participation(concour_id,user_id,date_participation,video_id) values((select id from concour where id=?),(select id from users where nom=?),?,(select id from video where id=?))";
         try {
-            pst=connection.prepareStatement(req2);
-            pst.setObject(1,p.getConcourId());
-            pst.setObject(2,p.getUserId());
-            pst.setTimestamp(3, (Timestamp) p.getDateParticipation());
-            pst.setObject(4,id);
             
+            PreparedStatement pst = connection.prepareStatement(req);
+
+            pst = connection.prepareStatement(req2);
+            pst.setObject(1, p.getConcour_id());
+            System.out.println(p.getConcour_id());
+            pst.setObject(2, p.getUser_id());
+            System.out.println(p.getUser_id());
+            pst.setTimestamp(3, (Timestamp) p.getDate_participation());
+            System.out.println(p.getDate_participation());
+            pst.setObject(4, id);
+
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,6 +101,10 @@ Concour c ;
     public void delete(Video v) {
         String req = "delete from participation where video_id=?";
         try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
+            PreparedStatement pst = connection.prepareStatement(req);
+
             pst = connection.prepareStatement(req);
             pst.setInt(1, v.getId());
 
@@ -87,6 +114,10 @@ Concour c ;
         }
         String req2 = "delete from video where id=?";
         try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
+            PreparedStatement pst = connection.prepareStatement(req);
+
             pst = connection.prepareStatement(req2);
             pst.setInt(1, v.getId());
 
@@ -99,6 +130,10 @@ Concour c ;
     public void update(Video v) {
         String req = "update video set url=?,title=? where id=?";
         try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
+            PreparedStatement pst = connection.prepareStatement(req);
+
             pst = connection.prepareStatement(req);
             pst.setString(1, v.getUrl());
             pst.setString(2, v.getTitle());
@@ -111,9 +146,12 @@ Concour c ;
     }
 
     public ObservableList<Video> getAll(Concour c) {
-        String req = "select * from video inner join user on(video.owner=user.id) where video.id in(select video_id from participation where concour_id=?)";
-        ObservableList<Video> list = FXCollections.observableArrayList();
+
+        String req = "select * from video inner join users on(video.owner=users.id) where video.id in(select video_id from participation where concour_id=?)";
+        System.out.println(c.getId());
         try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
             pst = connection.prepareStatement(req);
             pst.setInt(1, c.getId());
             rs = pst.executeQuery();
@@ -121,9 +159,9 @@ Concour c ;
             while (rs.next()) {
 
                 list.add(new Video(rs.getInt("id"), rs.getString("url"), rs.getString("title"), rs.getTimestamp("publish_date"),
-                        new Users(80, "hiba", "farhat", 1, "test", "test", "test", "test", true, 0, "test")));
+                        new Users(rs.getInt("Id"), rs.getString("Nom"), rs.getString("Role"), rs.getString("Prenom"), rs.getString("Password"), rs.getInt("Tel"), rs.getString("Pays"), rs.getInt("is_Enabled"),
+                                rs.getInt("Age"), rs.getString("Sexe"), rs.getInt("super_admin"))));
 
-//                        new Users(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))));
             }
 
         } catch (SQLException e) {
@@ -131,70 +169,81 @@ Concour c ;
         }
         return list;
     }
-//     public competition_participant getWinners(int vid_id){
-//      String req="select * from competition_participant "
-//              + "inner join competition on(competition.id=competition_participant.competition_id) "
-//              + "inner join user on(competition_participant.user_id=user.id) "
-//              + "inner join video on(competition_participant.video_id=video.id) "
-//             
-//              + " where competition_participant.video_id = ?";
-//              
-//    competition_participant cp=null;
-//      try {
-//             pst=connection.prepareStatement(req);
-//            pst.setInt(1,vid_id);
-//            rs=pst.executeQuery();
-//            
-//            if(rs.next()){
-//                
-//                cp= (new competition_participant(new Competition(rs.getInt("competition.id"),rs.getString("subject"), rs.getTimestamp("competition_date"), rs.getTimestamp("competition_end_date"))
-//                        , 
-//                         new User(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))
-//                        , rs.getTimestamp("participation_date"), 
-//                        new video(rs.getInt("id"),rs.getString("url"),rs.getString("title"),rs.getTimestamp("publish_date"),new User(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles")))));
-//                        
-//            }
-//    
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//         
-//        return cp;
-//     }
-//     
-//      public Boolean findParticipation(Competition c, User u) {
-//        String req = "select * from competition_participant where competition_id=? and user_id=?";
-//        try {
-//            pst = connection.prepareStatement(req);
-//            pst.setInt(1, c.getId());
-//            pst.setInt(2, u.getId());
-//
-//            rs = pst.executeQuery();
-//            return rs.next();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return false;
-//    }
-//      public ObservableList<video> getAllOrdered(Competition c){
-//      String req="select * from video inner join user on(video.owner=user.id) where video.id in(select video_id from competition_participant where competition_id=?) order by video.publish_date";
-//      ObservableList<video> list=FXCollections.observableArrayList();
-//      try {
-//             pst=connection.prepareStatement(req);
-//            pst.setInt(1,c.getId());
-//            rs=pst.executeQuery();
-//            
-//            while(rs.next()){
-//                
-//                list.add(new video(rs.getInt("id"),rs.getString("url"),rs.getString("title"),rs.getTimestamp("publish_date"),  
-//                        new User(rs.getInt("user.id"),rs.getString("username"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))));
-//            }
-//    
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//     }
-//}
+
+    public Participation getWinners(int vid_id) {
+        String req = "select * from participation "
+                + "inner join concour on(concour.id=participation.concour_id) "
+                + "inner join users on(participation.user_id=users.id) "
+                + "inner join video on(participation.video_id=video.id) "
+                + " where participation.video_id = ?";
+
+        Participation cp = null;
+        try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
+            PreparedStatement pst = connection.prepareStatement(req);
+
+            pst = connection.prepareStatement(req);
+            pst.setInt(1, vid_id);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                cp = (new Participation(new Concour(rs.getInt("concour.id"), rs.getString("sujet"), rs.getDate("date_debut"), rs.getTimestamp("date_fin")) // new Users(rs.getInt("user.id"),rs.getString("nom"),rs.getString("email"), rs.getString("adresse"),rs.getString("sexe"), rs.getString("name"), rs.getString("first_name"),rs.getString("telephone_number"),rs.getString("roles"))
+                        ,
+                         new Users(rs.getInt("Id"), rs.getString("Nom"), rs.getString("Role"), rs.getString("Prenom"), rs.getString("Password"), rs.getInt("Tel"), rs.getString("Pays"), rs.getInt("is_Enabled"),
+                                rs.getInt("Age"), rs.getString("Sexe"), rs.getInt("super_admin")),
+                        rs.getTimestamp("participation_date"),
+                        new Video(rs.getInt("id"), rs.getString("url"), rs.getString("title"), rs.getTimestamp("publish_date"))));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cp;
+    }
+
+    public Boolean findParticipation(Concour c, Users u) {
+        String req = "select * from participation where concour_id=? and user_id=?";
+        try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
+            pst = connection.prepareStatement(req);
+            pst.setInt(1, c.getId());
+            pst.setInt(2, u.getId());
+
+            rs = pst.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public ObservableList<Video> getAllOrdered(Concour c) {
+        String req = "select * from video inner join users on(video.owner=users.id) where video.id in(select video_id from participation where concour_id=?) order by video.publish_date";
+        try {
+            Connection connection = MyConnection.getInstance().getConnection();
+
+            PreparedStatement pst = connection.prepareStatement(req);
+
+            pst = connection.prepareStatement(req);
+            pst.setInt(1, c.getId());
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                list.add(new Video(rs.getInt("id"), rs.getString("url"), rs.getString("title"), rs.getTimestamp("publish_date"),
+                        new Users(rs.getInt("Id"), rs.getString("Nom"), rs.getString("Role"), rs.getString("Prenom"), rs.getString("Password"), rs.getInt("Tel"), rs.getString("Pays"), rs.getInt("is_Enabled"),
+                                rs.getInt("Age"), rs.getString("Sexe"), rs.getInt("super_admin"))));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
 }

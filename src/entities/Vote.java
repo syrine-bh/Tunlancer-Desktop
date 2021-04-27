@@ -12,10 +12,10 @@ import java.util.Objects;
  * @author Hiba
  */
 public class Vote {
-    private Users user_id;
+    private Users2 user_id;
     private Video video_id;
 
-    public Vote(Users user_id, Video video_id) {
+    public Vote(Users2 user_id, Video video_id) {
         this.user_id = user_id;
         this.video_id = video_id;
     }
@@ -23,11 +23,11 @@ public class Vote {
     public Vote() {
     }
 
-    public Users getUser_id() {
+    public Users2 getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Users user_id) {
+    public void setUser_id(Users2 user_id) {
         this.user_id = user_id;
     }
 

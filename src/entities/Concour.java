@@ -21,7 +21,7 @@ public class Concour {
     String sujet;
     String description;
     Date dateDebut;
-    Date dateFin;
+   Timestamp dateFin;
     String imageName;
     String couleur;
     Boolean isVideo;
@@ -79,11 +79,11 @@ public class Concour {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public Timestamp getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(Timestamp dateFin) {
         this.dateFin = dateFin;
     }
 
@@ -138,14 +138,14 @@ public class Concour {
         this.isVideo = isVideo;
     }
 
-    public Concour(int id, String nom, Date dateDebut, Date dateFin) {
+    public Concour(int id, String nom, Date dateDebut, Timestamp dateFin) {
         this.id = id;
         this.nom = nom;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
 
-    public Concour(String nom, String categorie, String sujet, String description, Date dateDebut, Date dateFin, String imageName, String couleur, Boolean isVideo) {
+    public Concour(String nom, String categorie, String sujet, String description, Date dateDebut, Timestamp dateFin, String imageName, String couleur, Boolean isVideo) {
         this.nom = nom;
         this.categorie = categorie;
         this.sujet = sujet;
@@ -157,7 +157,7 @@ public class Concour {
         this.isVideo = isVideo;
     }
 
-    public Concour(int id, String nom, String categorie, String sujet, Date dateDebut, Date dateFin) {
+    public Concour(int id, String nom, String categorie, String sujet, Date dateDebut, Timestamp dateFin) {
         this.id = id;
         this.nom = nom;
         this.categorie = categorie;

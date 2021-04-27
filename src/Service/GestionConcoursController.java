@@ -111,7 +111,7 @@ ss.
     }
 
     private void loadTableauConcours() {
-        this.connection = MyConnection.getInstance().getCnx();
+        this.connection = MyConnection.getInstance().getConnection();
         try {
             TabViewListC = FXCollections.observableArrayList();
             String rq = "SELECT * FROM `concour`";
@@ -121,7 +121,7 @@ ss.
             while (rs.next()) {
                 TabViewListC.add(
                         new Concour(rs.getInt("id"), rs.getString("nom"), rs.getString("sujet"), rs.getString("categorie"),
-                                rs.getDate("date_debut"), rs.getDate("date_Fin")));
+                                rs.getDate("date_debut"), rs.getTimestamp("date_Fin")));
             }
 
             this.col_id.setCellValueFactory(new PropertyValueFactory<Concour, String>("id"));
@@ -211,7 +211,7 @@ ss.
                 Concour tab1 = tabListC.getSelectionModel().getSelectedItem();
                 String querry = "DELETE FROM `concour` WHERE `id` = " + tab1.getId();
 
-                connection = MyConnection.getInstance().getCnx();
+                connection = MyConnection.getInstance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(querry);
                 ps.execute();
                 System.out.println("Supprimer avec success  !!!");

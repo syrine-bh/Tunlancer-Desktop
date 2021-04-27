@@ -7,43 +7,51 @@ package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
- * @author Hiba
+ * @author asus
  */
 public class MyConnection {
-     // sh vers la base 
-     String url="jdbc:mysql://localhost:3306/tunlancer_bd";
-    String login="root";
-    String pwd="";
-   
-    Connection cnx;
-    public static MyConnection instance; //singleton 
-    // singleton constr privé
-    private MyConnection() {
-        try {
-            //apl driver 
-            cnx = DriverManager.getConnection(url, login, pwd);
-            System.out.println("Connexion établie!");
-        } catch (SQLException ex) {
-            System.out.println("pas de connexion");
-        }
+    final static String URL="jdbc:mysql://127.0.0.1:3306/tunlancer_bd";
+    final static String LOGIN="root";
+    final static String PWD="";
+    static MyConnection instance=null;
+
+    public static Statement createStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Connection getCnx() { //renvoi cnx etablie ou pas 
-        return cnx;
+    public static PreparedStatement prepareStatement(String querry) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    private Connection cnx;
     
-    //sigleton :creation d'une instance
+    
+    public MyConnection()
+    {
+        try {
+           cnx =(Connection) DriverManager.getConnection(URL,LOGIN,PWD);
+            System.out.println("Connexion etablie avec succès");
+        }
+        catch (SQLException ex) {
+            System.out.println("Connexion echoué");
+            
+        }
+ 
+    }
     public static MyConnection getInstance(){
-        if(instance == null){
-            instance = new MyConnection();
+   
+        if(instance ==null) {
+            instance= new MyConnection();
         }
         return instance;
     }
-    
-
-    
+    public Connection getConnection(){
+        return cnx;
+    }
+  
 }

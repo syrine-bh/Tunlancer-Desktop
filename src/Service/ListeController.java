@@ -71,7 +71,7 @@ public class ListeController implements Initializable{
     }
 
     private void loadTableau() {
-        this.connection = MyConnection.getInstance().getCnx();
+        this.connection = MyConnection.getInstance().getConnection();
         try {
             TabViewList = FXCollections.observableArrayList();
             String rq = "SELECT * FROM `quiz`" ;
@@ -167,7 +167,7 @@ public class ListeController implements Initializable{
                 Quiz tab1 = tabListQ.getSelectionModel().getSelectedItem();
                String querry = "DELETE FROM `quiz` WHERE `id` = " + tab1.getId();
 
-                connection = MyConnection.getInstance().getCnx();
+                connection = MyConnection.getInstance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(querry);
                 ps.execute();
                 System.out.println("Supprimer avec success  !!!");
@@ -189,7 +189,7 @@ public class ListeController implements Initializable{
     
     
     private void loadTableauConcours() {
-        this.connection = MyConnection.getInstance().getCnx();
+        this.connection = MyConnection.getInstance().getConnection();
         try {
             TabViewListC = FXCollections.observableArrayList();
             String rq = "SELECT * FROM `concour`" ;
@@ -199,7 +199,7 @@ public class ListeController implements Initializable{
             while (rs.next()) {
                 TabViewListC.add(
                         new Concour( rs.getInt("id"), rs.getString("nom"),rs.getString("sujet"),rs.getString("categorie"),
-                                rs.getDate("date_debut"),rs.getDate("date_Fin") ));
+                                rs.getDate("date_debut"),rs.getTimestamp("date_Fin") ));
             }
 
 
@@ -285,7 +285,7 @@ public class ListeController implements Initializable{
                 Concour tab1 = tabListC.getSelectionModel().getSelectedItem();
                String querry = "DELETE FROM `concour` WHERE `id` = " + tab1.getId();
 
-                connection = MyConnection.getInstance().getCnx();
+                connection = MyConnection.getInstance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(querry);
                 ps.execute();
                 System.out.println("Supprimer avec success  !!!");

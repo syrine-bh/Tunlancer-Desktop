@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Front/HomePageHolderController.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/ParticipationServices.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Front/Concours/concoursVusersController.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Front/Concours/DetailsController.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/pidev2/Pidev2.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/ListeController.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Front/Concours/ServiceConcours.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Front/Concours/VoteServices.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Back/concours/AdminConcoursController.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/entities/Concour.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/Front/Concours/ConcourVListController.java</file>
+            <file>file:/C:/Users/Hiba/Desktop/pidev2/src/Service/GestionConcoursController.java</file>
+        </group>
     </open-files>
 </project-private>

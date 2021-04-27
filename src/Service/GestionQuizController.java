@@ -96,7 +96,7 @@ public class GestionQuizController implements Initializable {
 
     }    
  private void loadTableau() {
-        this.connection = MyConnection.getInstance().getCnx();
+        this.connection = MyConnection.getInstance().getConnection();
         try {
             TabViewList = FXCollections.observableArrayList();
             String rq = "SELECT * FROM `quiz`" ;
@@ -164,7 +164,7 @@ public class GestionQuizController implements Initializable {
                 Quiz tab1 = tabListQ.getSelectionModel().getSelectedItem();
                String querry = "DELETE FROM `quiz` WHERE `id` = " + tab1.getId();
 
-                connection = MyConnection.getInstance().getCnx();
+                connection = MyConnection.getInstance().getConnection();
                 PreparedStatement ps = connection.prepareStatement(querry);
                 ps.execute();
                 System.out.println("Supprimer avec success  !!!");
