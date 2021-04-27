@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="40.0" prefWidth="38.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Service.Front.Concours.ProgressCircleController">
+   
+    <userData>
+        <fx:reference source ="controller"></fx:reference>
+    </userData>
+    <children>
+      <Circle fx:id="circle" fill="#b9c3cd" layoutX="40.0" layoutY="40.0" radius="20.0" stroke="#b9c3cd" strokeType="INSIDE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+      <Label fx:id="number" layoutX="8.0" layoutY="4.0" text="10">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

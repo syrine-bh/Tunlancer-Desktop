@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane id="AnchorPane" fx:id="Competitions_list" prefHeight="535.0" prefWidth="1261.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Service.Front.Concours.ConcoursVController">
+    <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="404.0" layoutY="27.0" prefHeight="48.0" prefWidth="514.0" text="Competitions" textAlignment="CENTER">
+         
+      </Label>
+      
+      <GridPane fx:id="competitions" alignment="CENTER" hgap="1.0" layoutX="61.0" layoutY="196.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="241.0" prefWidth="1200.0" style="-fx-background-color: violet;" stylesheets="@../../resources/css/main.css">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="218.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="239.0" minWidth="83.0" prefWidth="226.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="464.0" minWidth="10.0" prefWidth="448.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="443.0" minWidth="10.0" prefWidth="147.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="443.0" minWidth="10.0" prefWidth="145.0" />
+        </columnConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

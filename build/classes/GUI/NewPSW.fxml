@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="495.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NewPSWController">
+    <!--    <JFXButton fx:id="btnsignin" layoutX="432.0" layoutY="502.0" onAction="" onMouseClicked="" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #300d33; -fx-background-radius: 200; -fx-text-fill: white;" text="CREATE ACCOUNT" />
+    -->
+    <AnchorPane layoutX="-6.0" minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="291.0" style="-fx-background-color: #eddaee;">
+        <children>
+            <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="140.0" stroke="#0d0909" strokeType="INSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="257.99999785609543">
+                <font>
+                    <Font name="Arial" size="29.0" />
+                </font>
+                <effect>
+                    <Glow />
+                </effect>
+            </Text>
+            <JFXButton fx:id="login" layoutX="93.0" layoutY="279.0" onAction="#Switch1" prefHeight="46.0" prefWidth="123.0" style="-fx-background-color: #300d33; -fx-border-radius: 200; -fx-border-color: #070000; -fx-background-radius: 200; -fx-text-fill: white;" text="Login page" textFill="#5b4b4b">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </JFXButton>
+         <Label layoutX="91.0" layoutY="102.0" prefHeight="65.0" prefWidth="155.0" text="Reset Password">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+         
+  
+        </children>
+    </AnchorPane>
+    <JFXButton fx:id="submit" layoutX="419.0" layoutY="285.0" onAction="#submit" prefHeight="32.0" prefWidth="91.0" style="-fx-background-color: #300d33; -fx-border-radius: 200; -fx-border-color: #070000; -fx-background-radius: 200; -fx-text-fill: white;" text="Submit" textFill="#5b4b4b">
+        <font>
+            <Font size="14.0" />
+        </font>
+    </JFXButton>
+   <Label layoutX="399.0" layoutY="195.0" text="New password" />
+   <PasswordField fx:id="password" layoutX="374.0" layoutY="232.0" prefHeight="32.0" prefWidth="195.0" promptText="password" />
+   
+          
+</AnchorPane>

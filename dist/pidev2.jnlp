@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="pidev2.jnlp">
+  <information>
+    <title>pidev2</title>
+    <vendor>Hiba</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
+    <jar href="lib\TrayTester.jar" size="52070" download="eager" />
+    <jar href="lib\commons-io-2.8.0.jar" size="285424" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\fontawesomefx-commons-9.1.2.jar" size="24064" download="eager" />
+    <jar href="lib\fontawesomefx-fontawesome-4.7.0-9.1.2.jar" size="137226" download="eager" />
+    <jar href="lib\itextpdf-5.5.13.jar" size="2320581" download="eager" />
+    <jar href="lib\jBCrypt-0.4.1.jar" size="17570" download="eager" />
+    <jar href="lib\jfoenix-8.0.10.jar" size="2710207" download="eager" />
+    <jar href="lib\mail-1.4.7.jar" size="521157" download="eager" />
+    <jar href="lib\mysql-connector-java-8.0.23.jar" size="2415211" download="eager" />
+    <jar href="lib\qrgen-1.4.jar" size="7194" download="eager" />
+    <jar href="lib\zxing-1.7-core.jar" size="351930" download="eager" />
+    <jar href="lib\zxing-j2se-1.7.jar" size="22051" download="eager" />
+    <jar href="pidev2.jar" size="5051894" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="pidev2.Pidev2"  name="pidev2" />
+  <update check="always"/>
+</jnlp>

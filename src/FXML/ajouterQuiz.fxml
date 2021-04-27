@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Service.AjouterQuizController">
+   <children>
+      <TextField fx:id="tfConcour_id" layoutX="226.0" layoutY="108.0" promptText="saisir id concours " />
+      <TextField fx:id="tfNom" layoutX="226.0" layoutY="175.0" promptText="Saisir nom quiz" />
+
+      <TextField fx:id="tfNb_questions" layoutX="226.0" layoutY="248.0" promptText="Nbr question" />
+      <JFXButton fx:id="ajouterQuiz" layoutX="497.0" layoutY="324.0" onAction="#ajouterQuiz" text="Ajouter" />
+      <Text layoutX="232.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Quiz" textAlignment="CENTER" wrappingWidth="149.0" />
+   </children>
+</AnchorPane>

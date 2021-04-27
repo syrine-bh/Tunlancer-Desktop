@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="276.0" prefWidth="237.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Service.Front.Concours.ConcoursItemController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="276.0" prefWidth="248.0" style="-fx-background-color: #E5E8E8;">
+         <children>
+            <Label fx:id="concoursSujet" alignment="TOP_LEFT" layoutX="8.0" layoutY="138.0" prefHeight="75.0" prefWidth="251.0" style="-fx-font-size: 16px;" styleClass="text" stylesheets="@../../../../resources/css/main.css" text="Description" textFill="#7c7c7c" wrapText="true">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="concoursTitle" alignment="CENTER" layoutX="11.0" layoutY="77.0" prefHeight="36.0" prefWidth="240.0" style="-fx-font-size: 24px;" styleClass="text" stylesheets="@../../../../resources/css/main.css" text="Titre concours" textFill="#2b2b2c">
+               <font>
+                  <Font name="Century Gothic Bold" size="24.0" />
+               </font>
+            </Label>
+            <Pane layoutX="22.0" layoutY="21.0" prefHeight="28.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(to top, #a770ef, #cf8bf3, #fdb99b); -fx-background-radius: 0.5em;" styleClass="text" stylesheets="@../../../../../../../CoHealUi/src/coheal/css/main.css">
+               <effect>
+                  <DropShadow color="#00000080" />
+               </effect>
+               <children>
+                  <Label fx:id="typeConcours" contentDisplay="CENTER" layoutX="17.0" layoutY="7.0" style="-fx-font-size: 12px;" styleClass="text" stylesheets="@../../../../resources/css/main.css" text="test" textFill="WHITE">
+                     <font>
+                        <Font name="Century Gothic Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <FontAwesomeIconView fill="#2b2b2c" glyphName="ELLIPSIS_H" layoutX="243.0" layoutY="32.0" size="20" style="-fx-cursor: hand;" />
+      <Pane fx:id="showDetailsConcours" layoutX="73.0" layoutY="227.0" onMouseClicked="#showDetailsConcours" prefHeight="36.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to top, #a770ef, #cf8bf3, #fdb99b) linear-gradient(to top, #a770ef, #cf8bf3, #fdb99b); -fx-background-radius: 1em; -fx-cursor: hand;" stylesheets="@resources/css/main.css">
+               <children>
+                  <Label layoutX="28.0" layoutY="2.0" prefHeight="33.0" prefWidth="81.0" text="Voir Détails" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children></Pane>  
+          <AnchorPane fx:id="menuId" layoutX="171.0" layoutY="-33.0" prefHeight="40.0" prefWidth="91.0" style="-fx-background-color: linear-gradient(to right top, #13547a, #1f7190, #398fa3, #59adb4, #7fcbc3); -fx-background-radius: 1em;" visible="false">
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="FLAG" layoutX="53.0" layoutY="29.0" size="25" style="-fx-cursor: hand;" text="" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="STAR" layoutX="16.0" layoutY="29.0" size="25" style="-fx-cursor: hand;" text="" />
+               </children>
+            </AnchorPane>
+         </children>
+         <effect>
+            <DropShadow height="98.09" radius="44.0975" width="80.3">
+               <color>
+                  <Color red="0.4868420958518982" green="0.3741471767425537" blue="0.3741471767425537" />
+               </color>
+            </DropShadow>
+         </effect>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="701.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Service.Front.Concours.ListScoreController">
+   <children>
+      <TableView fx:id="tabListS" layoutX="38.0" layoutY="26.0" prefHeight="420.0" prefWidth="638.0">
+         <columns>
+            <TableColumn fx:id="pseudo" prefWidth="324.0" text="Pseudo" />
+            <TableColumn fx:id="score" prefWidth="313.0" text="Score" />
+         </columns>
+      </TableView>
+      <FontAwesomeIconView fx:id="close" fill="#13547a" glyphName="CLOSE" layoutX="680.0" layoutY="23.0" onMouseClicked="#closeAction" size="20" style="-fx-cursor: hand;" />
+      <FontAwesomeIconView fill="#13547a" glyphName="MINUS" layoutX="701.0" layoutY="22.0" onMouseClicked="#minAction" size="18" style="-fx-cursor: hand;" />
+   </children>
+</AnchorPane>

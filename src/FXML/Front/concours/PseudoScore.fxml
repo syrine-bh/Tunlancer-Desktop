@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="266.0" prefWidth="650.0" style="-fx-background-color: #D7BDE2; -fx-background-radius: 1em;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Service.Front.Concours.PseudoScoreController">
+   <children>
+      <Pane layoutX="14.0" layoutY="13.0" prefHeight="236.0" prefWidth="621.0" style="-fx-background-color: white; -fx-background-radius: 1em;">
+         <children>
+            <TextField fx:id="pseudo" layoutX="189.0" layoutY="106.0" prefHeight="25.0" prefWidth="243.0" />
+            <JFXButton layoutX="255.0" layoutY="167.0" onAction="#validerPseudo" prefHeight="31.0" prefWidth="111.0" style="-fx-background-color: black; -fx-background-radius: 1em;" text="valider" textFill="#fffefb">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="140.0" layoutY="26.0" style="-fx-font-size: 24;" styleClass="text" stylesheets="@../../../resources/css/main.css" text="Veuillez saisir votre pseudo" textFill="#111111" />
+            <FontAwesomeIconView glyphName="TIMES" layoutX="579.0" layoutY="36.0" onMouseClicked="#closeAction" size="20" style="-fx-cursor: hand;" text="" wrappingWidth="18.714285850524902" />
+         </children></Pane>
+      <TextArea fx:id="scoreT" layoutX="13.0" layoutY="-44.0" prefHeight="0.0" prefWidth="0.0" />
+   </children>
+</AnchorPane>
