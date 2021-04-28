@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="704.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.ForumController">
+    <stylesheets>
+        <URL value="@forum.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="TopicTable" layoutX="40.0" layoutY="140.0" prefHeight="324.0" prefWidth="625.0">
+        <columns>
+          <TableColumn fx:id="titreCol" prefWidth="75.0" text="Titre" />
+          <TableColumn fx:id="contenuCol" prefWidth="312.0" text="Contenu" />
+            <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="actionCol" prefWidth="162.0" text="Action" />
+        </columns>
+      </TableView>
+      <Pane layoutY="53.0" prefHeight="5.0" prefWidth="705.0" style="-fx-background-color: #DE8DBA;" />
+      <Text fontSmoothingType="LCD" layoutX="40.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trouvez la meilleure réponse à votre question technique" />
+      <FontAwesomeIconView fontSmoothingType="LCD" glyphName="CLOSE" layoutX="653.0" layoutY="26.0" onMouseClicked="#close" size="20" textAlignment="CENTER" wrappingWidth="37.428571701049805" />
+      <HBox layoutX="46.0" layoutY="75.0" prefHeight="51.0" prefWidth="144.0">
+         <children>
+            <FontAwesomeIconView fill="#298fab" glyphName="PLUS_CIRCLE" onMouseClicked="#AjouterTopic" size="35" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="26.0" top="8.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fill="#d799be" glyphName="REFRESH" layoutX="36.0" layoutY="48.0" onMouseClicked="#refreshTable" size="35" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="15.0" top="8.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+         </children>
+      </HBox>
+      <FontAwesomeIconView fill="#298fab" glyphName="PIE_CHART" layoutX="634.0" layoutY="114.0" onMouseClicked="#Stat"  size="25" />
+   </children>
+</AnchorPane>

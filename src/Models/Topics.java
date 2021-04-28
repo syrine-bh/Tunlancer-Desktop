@@ -6,20 +6,42 @@
 package Models;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import javafx.scene.control.Label;
+import utils.MaConnexion;
 
 /**
  *
  * @author cyrinaa belguith
  */
 public class Topics {
+
+ 
+
+    
+
+//    public static Topics getInstance() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
     
     private int id;
     private String titre;
     private String Contenu;
     private Date date;
     private int user_id;
+    private int note;
+    
+    //private List<Replies> replies;
 
     public Topics() {
+        //replies = new ArrayList<>();
     }
 
     public Topics(int id) {
@@ -47,9 +69,30 @@ public class Topics {
         this.date = date;
     }
 
-    
+    public Topics(String titre, String description) {
+        this.titre=titre;
+        this.Contenu=Contenu;
+    }
 
-    
+    public Topics(int id, int user_id, int note) {
+        this.id = id;
+        this.user_id = user_id;
+        this.note = note;
+    }
+
+    public Topics(int id, int note) {
+        this.id=id;
+        this.note=note;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+ 
     public int getId() {
         return id;
     }
@@ -94,8 +137,34 @@ public class Topics {
     public String toString() {
         return "Topics{" + "id=" + id + ", titre=" + titre + ", Contenu=" + Contenu + ", date=" + date + ", user_id=" + user_id + '}';
     }
-    
-    
+
+//    public int getTopic_id() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
+    public LinkedHashMap<Date, Integer> AfficheStatisticTopics(String an) {
+ LinkedHashMap<Date,Integer> map = new LinkedHashMap<>();    
+        
+        try {
+            String requete = "SELECT `date` Count(*) FROM `topics`"+ "GROUP BY EXTRACT(MONTH FROM Date)";
+            PreparedStatement pst = MaConnexion.getInstance().getCnx().prepareStatement(requete);
+            pst.setString(1, an);
+            ResultSet rs = pst.executeQuery();
+   
+            while(rs.next()){
+                map.put(rs.getDate(1), rs.getInt(2));
+                }
+                
+                map.entrySet().forEach(entry -> {
+                    System.out.println("dans le mois :"+entry.getKey() +"  nombre de topic "+ entry.getValue());
+               
+                });
+                
+        } catch (SQLException ex) {
+            System.out.println("Problem"+ex.getMessage());
+        }
+        return map;    }
+      
     
     
 }

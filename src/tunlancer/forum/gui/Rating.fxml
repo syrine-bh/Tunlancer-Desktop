@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="223.0" prefWidth="319.0" style="-fx-background-radius: 1em;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.RatingController">
+   <children>
+      <Rating fx:id="commentaireRating" layoutX="72.0" layoutY="69.0" prefHeight="32.0" prefWidth="195.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="1.0" green="1.0" blue="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rating>
+      <JFXButton buttonType="RAISED" layoutX="123.0" layoutY="149.0" onAction="#Rating" prefHeight="32.0" prefWidth="75.0" ripplerFill="BLACK" style="-fx-background-radius: 2em; -fx-background-color: #bdc3c7;" text="Envoyer" />
+      <Label fx:id="idT" layoutX="29.0" layoutY="22.0" />
+      <Label fx:id="idCon" layoutX="29.0" layoutY="52.0" />
+      <TextField fx:id="desc" layoutX="86.0" layoutY="112.0" />
+   </children>
+</AnchorPane>

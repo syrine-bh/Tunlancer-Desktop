@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="box" prefHeight="313.0" prefWidth="675.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="tunlancer.forum.gui.OneTopicController">
+   <children>
+      <Pane fx:id="box2" layoutX="14.0" layoutY="14.0" prefHeight="272.0" prefWidth="652.0">
+         <children>
+            <ImageView fx:id="avatar" fitHeight="59.0" fitWidth="63.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Image2.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="titre" layoutX="96.0" layoutY="14.0" text="Titre">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="contenu" layoutX="27.0" layoutY="78.0" prefHeight="148.0" prefWidth="598.0" />
+            <FontAwesomeIconView glyphName="CALENDAR" layoutX="558.0" layoutY="39.0" size="25" />
+            <Label fx:id="date" layoutX="556.0" layoutY="50.0" text="Date" />
+            <FontAwesomeIconView fx:id="editBtn" glyphName="PENCIL_SQUARE_ALT" layoutX="535.0" layoutY="262.0" size="25" />
+            <FontAwesomeIconView fx:id="supprimerBtn" glyphName="TRASH_ALT" layoutX="595.0" layoutY="261.0" size="25" />
+         </children>
+      </Pane>
+      <Separator layoutX="10.0" layoutY="296.0" prefHeight="8.0" prefWidth="652.0" />
+   </children>
+</AnchorPane>

@@ -13,10 +13,14 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import tray.animations.AnimationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -34,6 +38,7 @@ public class AddTopicController implements Initializable {
 
     private boolean update;
     int TopicId;
+    
     /**
      * Initializes the controller class.
      */
@@ -44,11 +49,26 @@ public class AddTopicController implements Initializable {
 
     @FXML
     private void AjouterTopic(ActionEvent event) {
+        
+        if(tfTitre.getText().isEmpty()){
+            Alert al = new Alert(Alert.AlertType.ERROR);
+            al.setHeaderText(null);
+            al.setContentText("Veuillez remplir les champs vides ! ");
+            al.showAndWait();;
+        }else if(taContenu.getText().isEmpty()){
+            Alert al = new Alert(Alert.AlertType.ERROR);
+            al.setHeaderText(null);
+            al.setContentText("Veuillez remplir les champs vides ! ");
+            al.showAndWait();
+        }else{
         ServiceTopics st = new ServiceTopics();
         Topics t = new Topics();
         t.setTitre(tfTitre.getText());
         t.setContenu(taContenu.getText());
+        t.setUser_id(48);
         st.AjouterTopic(t);
+        
+        }
         
     }
 

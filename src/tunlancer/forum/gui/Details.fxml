@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="676.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.DetailsController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="12.0" prefHeight="321.0" prefWidth="671.0">
+         <children>
+            <Pane layoutX="28.0" layoutY="23.0" prefHeight="282.0" prefWidth="648.0" style="-fx-background-color: #fff;">
+               <children>
+                  <ImageView fx:id="avatar" fitHeight="70.0" fitWidth="76.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Image2.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="4.0" layoutY="99.0" prefHeight="2.0" prefWidth="648.0" />
+                  <Label fx:id="Ltitre" layoutX="113.0" layoutY="17.0" text="Titre" textFill="#d7abe2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Lcontenu" layoutX="16.0" layoutY="116.0" text="DESCRIPTION" textFill="#aeacac">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Ldate" layoutX="511.0" layoutY="12.0" text="Date de création" textFill="#d7abe2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date" layoutX="527.0" layoutY="42.0" text="date" textFill="#aeacac" />
+                  <Label fx:id="titre" layoutX="118.0" layoutY="52.0" text="Titre" />
+                  <TextArea fx:id="contenu" layoutX="16.0" layoutY="136.0" prefHeight="136.0" prefWidth="621.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <Separator layoutX="29.0" layoutY="324.0" prefHeight="9.0" prefWidth="648.0" style="-fx-background-color: #d7abe2;" />
+      <VBox fx:id="vBox" layoutX="16.0" layoutY="347.0" prefHeight="117.0" prefWidth="641.0">
+         <children>
+            <JFXListView fx:id="listView" prefHeight="97.0" prefWidth="641.0" />
+         </children></VBox>
+      <TextArea fx:id="contenuCommentaire" layoutX="32.0" layoutY="586.0" onMouseClicked="#AffichageTextArea" prefHeight="78.0" prefWidth="452.0" promptText="Ecrivez votre commentaire..." />
+      <JFXButton buttonType="RAISED" layoutX="499.0" layoutY="588.0" onAction="#Envoyer" style="-fx-background-color: #d7abe2;" text="Envoyer" />
+   </children>
+</AnchorPane>

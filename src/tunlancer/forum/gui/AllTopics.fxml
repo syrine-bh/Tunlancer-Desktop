@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane prefHeight="542.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.AllTopicsController">
+   <content>
+      <AnchorPane layoutX="256.0" layoutY="146.0" minHeight="0.0" minWidth="0.0" prefHeight="846.0" prefWidth="1000.0">
+         <children>
+            <VBox fx:id="pnl_scroll" layoutX="9.0" layoutY="46.0" prefHeight="431.0" prefWidth="683.0">
+               <children>
+                  <StackPane fx:id="contentPane" prefHeight="431.0" prefWidth="710.0" />
+               </children>
+            </VBox>
+            <JFXButton layoutX="380.0" layoutY="11.0" onMouseClicked="#AjouterTopic" style="-fx-background-color: #d7abe2;" text="Créer un topic" />
+            <Label layoutX="36.0" layoutY="16.0" prefHeight="17.0" prefWidth="316.0" text="Trouvez la meilleure réponse à votre question technique" />
+            <FontAwesomeIconView fill="#d799be" glyphName="REFRESH" layoutX="612.0" layoutY="34.0" onMouseClicked="#refreshNodes" size="28" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

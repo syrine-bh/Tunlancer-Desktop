@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="329.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.AddReplyController">
+    <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="314.0" prefWidth="700.0">
+         <children>
+            <JFXButton fx:id="btnrepondre" buttonType="RAISED" layoutX="39.0" layoutY="193.0" onAction="#AddRep" text="Répondre" />
+            <TextArea fx:id="reponse" layoutX="39.0" layoutY="71.0" prefHeight="101.0" prefWidth="586.0" text="Laissez votre commentaire ici!" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

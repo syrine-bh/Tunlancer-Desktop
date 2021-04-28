@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="596.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer.forum.gui.DisplayRepliesController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="20.0" layoutY="20.0" prefHeight="592.0" prefWidth="700.0">
+         <children>
+            <Pane layoutX="26.0" layoutY="17.0" prefHeight="309.0" prefWidth="656.0" style="-fx-background-color: #fff;">
+               <children>
+                  <ImageView fx:id="avatar" fitHeight="70.0" fitWidth="76.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Image2.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="4.0" layoutY="98.0" prefHeight="0.0" prefWidth="649.0" />
+                  <Label fx:id="Ltitre" layoutX="113.0" layoutY="17.0" text="Titre" textFill="#d7abe2">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Lcontenu" layoutX="34.0" layoutY="116.0" text="DESCRIPTION" textFill="#aeacac">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Ldate" layoutX="546.0" layoutY="12.0" text="Date de création" textFill="#d7abe2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date" layoutX="576.0" layoutY="57.0" text="date" textFill="#aeacac" />
+                  <FontAwesomeIconView fx:id="EditTopic" fill="#4caf50" glyphName="PENCIL_SQUARE_ALT" layoutX="560.0" layoutY="296.0" size="25" />
+                  <FontAwesomeIconView fx:id="deletebtnTopic" fill="#d50000" glyphName="TRASH_ALT" layoutX="602.0" layoutY="295.0" size="25" />
+                  <Label fx:id="titre" layoutX="118.0" layoutY="52.0" text="Titre" />
+                  <TextArea fx:id="contenu" layoutX="33.0" layoutY="136.0" prefHeight="136.0" prefWidth="604.0" />
+                  <FontAwesomeIconView fill="#d799be" glyphName="COMMENTS_ALT" layoutX="39.0" layoutY="295.0" onMouseClicked="#AjouterRep" size="25" />
+               </children>
+            </Pane>
+            <VBox fx:id="vbox" layoutX="25.0" layoutY="343.0" prefHeight="75.0" prefWidth="590.0">
+               <children>
+                  <JFXListView fx:id="listCom" prefHeight="75.0" prefWidth="594.0">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </JFXListView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

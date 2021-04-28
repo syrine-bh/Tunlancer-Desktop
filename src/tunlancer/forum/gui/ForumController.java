@@ -179,16 +179,7 @@ public class ForumController implements Initializable {
                                 
                                 
                                 
-//                            try {
-//                                topics = TopicTable.getSelectionModel().getSelectedItem();
-//                                String query = "DELETE FROM `Topics` WHERE `titre` ="+topics.getTitre();
-//                                cnx = MaConnexion.getInstance().getCnx();
-//                                preparedStatement = cnx.prepareStatement(query);
-//                                preparedStatement.execute();
-//                                
-//                            } catch (SQLException ex) {
-//                                System.out.println(ex.getMessage());
-//                            }
+
                             }
                         });
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
@@ -237,5 +228,22 @@ public class ForumController implements Initializable {
          TopicTable.setItems(TopicsList);
         
     }
+
+    @FXML
+    private void Stat(MouseEvent event) {
+         try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/tunlancer/forum/gui/StatForum.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+             System.out.println("stat "+ex.getMessage());
+        }
+        
+    }
+    
+    
     
 }
