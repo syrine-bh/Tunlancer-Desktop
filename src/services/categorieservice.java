@@ -31,7 +31,7 @@ public class categorieservice  implements Iservicecategorie{
             PreparedStatement ps = new MyConnection().getConnection().prepareStatement(requete);
             ps.setString(1, c.getType());
              
-                ps.setInt(6,c.getId());
+                ps.setInt(2,c.getId());
 
            nbModif  = ps.executeUpdate();
             System.out.println("categorie modifiée avec succés");

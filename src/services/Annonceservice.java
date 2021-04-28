@@ -24,7 +24,8 @@ import javafx.scene.control.ListView;
 public class Annonceservice implements Iserviceannonce{
 
     @Override
-    public void addAnnonce(Annonce a) {
+    public boolean addAnnonce(Annonce a) {
+        
          try {
          String requete = "INSERT INTO annonce(nom , description , date ,lieux ,renumeration) VALUES (?,?,?,?,?)";
             PreparedStatement ps = new MyConnection ().getConnection().prepareStatement(requete);
@@ -37,9 +38,11 @@ public class Annonceservice implements Iserviceannonce{
 
             ps.executeUpdate();
             System.out.println("annonce  ajoutée");
+            return true;
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+         return false;
     }
         @Override
     public List<Annonce> DisplayAnnonce() {
@@ -51,12 +54,13 @@ public class Annonceservice implements Iserviceannonce{
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
                 Annonce a = new Annonce();
-                a.setId(rs.getInt("id"));
+               
                 a.setNom(rs.getString("nom"));
                  a.setDescription(rs.getString("description"));
                  a.setDate(rs.getDate("date"));
                  a.setLieux(rs.getString("lieux"));
                  a.setRenumeration(rs.getString("renumeration"));
+                  a.setId(rs.getInt("id"));
 
                 ANNList.add(a);
             }
@@ -71,7 +75,7 @@ public class Annonceservice implements Iserviceannonce{
     public int updateAnnonce(Annonce a) {
          int nbModif = 0;
    try {
-            String requete = "UPDATE annonce SET nom=?,description=? , date=? ,lieux=? ,renumeration=? ,where id=?";
+            String requete = "UPDATE annonce SET nom=?,description=? , date=? ,lieux=? ,renumeration=? where id=?";
             PreparedStatement ps = new MyConnection().getConnection().prepareStatement(requete);
             ps.setString(1, a.getNom());
              ps.setString(2, a.getDescription());
@@ -132,11 +136,42 @@ public class Annonceservice implements Iserviceannonce{
          
      }
      
-     public ListView<Annonce >  getannoncebyid(int ida) {
+     public Annonce  getannoncebyid(int id) {
         
-         List <Annonce> ANNList = new ArrayList<>();
+        // List <Annonce> ANNList = new ArrayList<>();
+        Annonce a = new Annonce();
         try {
-            String requete = "SELECT * FROM annonce where id=" + ida;
+            String requete = "SELECT * FROM annonce where id=" + id;
+        
+             Statement st = new MyConnection ().getConnection()
+                    .createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()) {
+                
+                a.setId(rs.getInt("id"));
+                a.setNom(rs.getString("nom"));
+                 a.setDescription(rs.getString("description"));
+                 a.setDate(rs.getDate("date"));
+                 a.setLieux(rs.getString("lieux"));
+                 a.setRenumeration(rs.getString("renumeration"));
+                 //ANNList.add(a);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        //return  ANNList;
+        return a;
+         
+     }
+     
+     
+      public List <Annonce>  getbyid(int id) {
+        
+        List <Annonce> ANNList = new ArrayList<>();
+        
+        try {
+            String requete = "SELECT * FROM annonce where id=" + id;
         
              Statement st = new MyConnection ().getConnection()
                     .createStatement();
@@ -155,7 +190,8 @@ public class Annonceservice implements Iserviceannonce{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return  (ListView<Annonce>) ANNList;
+        return  ANNList;
+        
          
      }
      }

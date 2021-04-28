@@ -33,7 +33,8 @@ public class postuleservice  implements Iservicepostuler{
                 ps.setString(5, a.getPrenom());
                 ps.setString(6, a.getMessage());
 
-                 ps.setInt(7, a.getAnnonce_id().getId());
+               //  ps.setInt(7,a.getAnnonce_id().getId());
+                ps.setInt(7,a.getId());
 
 
             ps.executeUpdate();

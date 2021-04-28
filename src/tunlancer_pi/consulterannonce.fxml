@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="nom" prefHeight="543.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer_pi.ConsulterannonceController">
+<AnchorPane id="AnchorPane" fx:id="nom" prefHeight="590.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tunlancer_pi.ConsulterannonceController">
    <children>
       <Label layoutX="32.0" layoutY="242.0" text="nom" />
       <Label layoutX="32.0" layoutY="284.0" text="prenom" />
@@ -19,11 +19,13 @@
       <TextField fx:id="telephonefx" layoutX="98.0" layoutY="348.0" />
       <TextField fx:id="cvfx" layoutX="95.0" layoutY="383.0" />
       <TextField fx:id="messagefx" layoutX="88.0" layoutY="421.0" />
-      <Button layoutX="274.0" layoutY="488.0" mnemonicParsing="false" onAction="#postuleraction" text="postuler" />
+      <Button layoutX="280.0" layoutY="524.0" mnemonicParsing="false" onAction="#postuleraction" text="postuler" />
       <Label fx:id="no" layoutX="43.0" layoutY="36.0" />
       <Label fx:id="descrition" layoutX="46.0" layoutY="78.0" text="Label" />
       <Label fx:id="date" layoutX="49.0" layoutY="114.0" text="Label" />
-      <Label fx:id="lieux" layoutX="51.0" layoutY="151.0" text="Label" />
-      <Label fx:id="renu" layoutX="49.0" layoutY="191.0" text="Label" />
+      <Label fx:id="lieux" layoutX="51.0" layoutY="151.0" prefHeight="18.0" prefWidth="90.0" />
+      <Label fx:id="renu" layoutX="49.0" layoutY="191.0" prefHeight="18.0" prefWidth="104.0" text="t" />
+      <TextField fx:id="cvfx1" layoutX="116.0" layoutY="469.0" />
+      <Button layoutX="29.0" layoutY="483.0" mnemonicParsing="false" onAction="#choose" text="choose file" />
    </children>
 </AnchorPane>

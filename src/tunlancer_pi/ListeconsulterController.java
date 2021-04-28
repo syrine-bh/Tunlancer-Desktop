@@ -8,11 +8,13 @@ package tunlancer_pi;
 import entities.Annonce;
 import java.io.IOException;
 import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,6 +30,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import services.Annonceservice;
+import javafx.fxml.FXMLLoader;
 
 /**
  * FXML Controller class
@@ -40,8 +43,8 @@ public class ListeconsulterController implements Initializable {
     private HBox vHBox;
     @FXML
     private Label nlabel;
-    @FXML
-    private ListView<Annonce> listeann;
+   
+    private List<Annonce> listeann;
 
     /**
      * Initializes the controller class.
@@ -51,7 +54,7 @@ public class ListeconsulterController implements Initializable {
         // TODO
         
          Annonceservice es = new Annonceservice();
-           listeann  = es.getannoncebyid(1);
+           listeann  = es.getbyid(19);
            listeann .forEach(ev -> {
 
             try {

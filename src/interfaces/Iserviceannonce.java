@@ -13,7 +13,7 @@ import java.util.List;
  * @author siwar
  */
 public interface Iserviceannonce {
-     public void addAnnonce(Annonce  a);
+     public boolean addAnnonce(Annonce  a);
      public List< Annonce> DisplayAnnonce();
      public int updateAnnonce(Annonce  a);
       public void deleteAnnonce(int  a);

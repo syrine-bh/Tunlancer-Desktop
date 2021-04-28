@@ -78,7 +78,7 @@ public class ListaffichageController implements Initializable {
        fxlist.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
  
       // fxlist.getSelectionModel().selectIndices(1, 2);
-        // fxlist.setOrientation(Orientation.HORIZONTAL);
+        fxlist.setOrientation(Orientation.HORIZONTAL);
         //
        // tvannonce.setItems(annonce);
      }

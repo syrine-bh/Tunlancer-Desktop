@@ -19,11 +19,12 @@ public class postuler {
      private String email;
      private String message;
      private String cv;
-      private  Annonce annonce_id;
+     // private  Annonce annonce_id;
+    private  int annonce_id;
         public postuler() {
     }
 
-    public postuler(int id, String nom, String prenom, String telephone, String email, String message, String cv, Annonce annonce_id) {
+    public postuler(int id, String nom, String prenom, String telephone, String email, String message, String cv, int annonce_id ) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -90,11 +91,18 @@ public class postuler {
         this.cv = cv;
     }
 
-    public Annonce getAnnonce_id() {
+
+    public int getAnnonce_id() {
         return annonce_id;
     }
 
+    /* public Annonce getAnnonce_id() {
+    return annonce_id;
+    }
     public void setAnnonce_id(Annonce annonce_id) {
+    this.annonce_id = annonce_id;
+    }*/
+    public void setAnnonce_id(int annonce_id) {
         this.annonce_id = annonce_id;
     }
 

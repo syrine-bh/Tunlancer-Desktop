@@ -87,6 +87,7 @@ private int id;
                 Annonceservice  as = new Annonceservice ();
                 Annonce a= new Annonce();
                 a.setId(this.id);
+                a.setNom(nommodif.getText());
                 a.setDescription(Descriptionfx.getText());
                 a.setDate(java.sql.Date.valueOf(date.getValue()));
              

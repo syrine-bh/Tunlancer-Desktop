@@ -7,7 +7,8 @@ package tunlancer_pi;
 
 import Utils.MyConnection;
 import entities.Annonce;
-import java.awt.event.MouseEvent;
+import java.awt.TrayIcon.MessageType;
+//import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -18,12 +19,15 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,11 +38,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import org.controlsfx.control.Notifications;
 import services.Annonceservice;
 
 /**
@@ -62,6 +69,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField Fxrenu;
     private Label laaffiche;
+    @FXML
     private TableColumn<Annonce, Integer> fxid;
    
     @FXML
@@ -78,8 +86,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableView< Annonce > tvannonce;
     @FXML
-    private TableColumn<?, ?> fxAction;
-    @FXML
     private Button modifierfx;
     
    // private TableColumn<Annonce,Void> fxAction   = new TableColumn("");
@@ -89,16 +95,20 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        fxid.setCellValueFactory(new PropertyValueFactory<Annonce, Integer>("id"));
+        
          FXtabNom1.setCellValueFactory(new PropertyValueFactory<Annonce, String>("nom"));
           tadescription1.setCellValueFactory(new PropertyValueFactory<Annonce, String>("description"));
            tabdate.setCellValueFactory(new PropertyValueFactory<Annonce,Date>("Date"));
            
             tablieux.setCellValueFactory(new PropertyValueFactory<Annonce, String>("lieux"));
              tabrenumeration.setCellValueFactory(new PropertyValueFactory<Annonce, String>("renumeration"));
+             fxid.setCellValueFactory(new PropertyValueFactory<Annonce, Integer>("id"));
+       
              Afficher();
         addButtonSupprimerToTable();
         addButtonModifierToTable();
+  
+        
     }   
       private void addButtonSupprimerToTable() {
         TableColumn<Annonce, Void> colBtn = new TableColumn("");
@@ -217,8 +227,43 @@ public class FXMLDocumentController implements Initializable {
        a.setLieux(Fxlieux.getText());
        a.setRenumeration(Fxrenu.getText());
       as.addAnnonce(a);
-    }
+     
+      if(as.addAnnonce(a)==true) {
+          Notifications.create()
+            .title("Ajout")
+            .text("operation reussite").hideAfter(javafx.util.Duration.seconds(2))
+	.position(Pos.BOTTOM_RIGHT)
+	.darkStyle()
+	.showInformation();
+          
+      }
+      else{
+           Notifications.create()
+            .title("Ajout")
+            .text("Erreur d'ajout").hideAfter(javafx.util.Duration.seconds(2))
+	.position(Pos.BOTTOM_RIGHT)
+	.darkStyle()
+	.showInformation();
+          
+      }
+     
+}
+    
 
+     /*protected void showNotification( ) {
+    Notifications notificationPopup = Notifications.create().title(notification.getTitle()).text(notification.getText());
+    if(MessageType.INFO.equals(notification.getMessageType())) {
+        notificationPopup.showConfirm();
+    } else if(MessageType.INFO.equals(notification.getMessageType())) {
+        notificationPopup.showInformation();
+    } else if(MessageType.WARNING.equals(notification.getMessageType())) {
+        notificationPopup.showWarning();
+    } else if(MessageType.ERROR.equals(notification.getMessageType())) {
+        notificationPopup.showError();
+    } else {
+        notificationPopup.show();
+    }
+    }*/
     @FXML
     private void Afficher() {
         /* Annonceservice as=new Annonceservice();
@@ -241,14 +286,16 @@ public class FXMLDocumentController implements Initializable {
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
                 Annonce a = new Annonce();
-                a.setId(rs.getInt("id"));
+               
                 a.setNom(rs.getString("nom"));
                  a.setDescription(rs.getString("description"));
                  a.setDate(rs.getDate("date"));
                  a.setLieux(rs.getString("lieux"));
                  a.setRenumeration(rs.getString("renumeration"));
+                  a.setId(rs.getInt("id"));
 
                 annonce.add(a);
+               
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -257,6 +304,8 @@ public class FXMLDocumentController implements Initializable {
         //return annonce;
         
         tvannonce.setItems(annonce);
+        //tvannonce.setOrientation(Orientation.HORIZONTAL);
+       // tvannonce.setOrientation(Orientation.HORIZONTAL);
            
     }
    /* private ObservableList<Annonce>  Afficher() {
@@ -295,6 +344,8 @@ public class FXMLDocumentController implements Initializable {
        
         
     }
+        @FXML
+
       private void getSelected(MouseEvent event) {
          /*ObservableList<Annonce> annonce ;
          annonce= fxlist.getSelectionModel().getSelectedItems();
@@ -310,7 +361,8 @@ public class FXMLDocumentController implements Initializable {
                 return ;
 
             }
-            tunlancer_pi.FXMLLoader loader = new tunlancer_pi.FXMLLoader(getClass().getResource("Consulterannonce.fxml"));
+              System.out.println("" +index);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("consulterannonce.fxml"));
             Parent root;
             root = loader.load();
             ConsulterannonceController  pctC = loader.getController();

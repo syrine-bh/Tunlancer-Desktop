@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="767.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tunlancer_pi.FXMLController">
+   <children>
+      <TabPane prefHeight="519.0" prefWidth="774.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="ann" text="GestionAnnonce">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="457.0" prefWidth="667.0" />
+            </content>
+          </Tab>
+          <Tab fx:id="type" text="Gestiontype">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="273.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab fx:id="Stati" text="Statistiques">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="527.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
