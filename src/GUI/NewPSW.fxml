@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" prefHeight="495.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NewPSWController">
     <!--    <JFXButton fx:id="btnsignin" layoutX="432.0" layoutY="502.0" onAction="" onMouseClicked="" prefHeight="46.0" prefWidth="206.0" style="-fx-background-color: #300d33; -fx-background-radius: 200; -fx-text-fill: white;" text="CREATE ACCOUNT" />
     -->
-    <AnchorPane layoutX="-6.0" minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="291.0" style="-fx-background-color: #eddaee;">
+    <AnchorPane layoutX="-6.0" minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="291.0" style="-fx-background-color: #EBDEF0;">
         <children>
             <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="140.0" stroke="#0d0909" strokeType="INSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="257.99999785609543">
                 <font>
@@ -21,7 +21,7 @@
                     <Glow />
                 </effect>
             </Text>
-            <JFXButton fx:id="login" layoutX="93.0" layoutY="279.0" onAction="#Switch1" prefHeight="46.0" prefWidth="123.0" style="-fx-background-color: #300d33; -fx-border-radius: 200; -fx-border-color: #070000; -fx-background-radius: 200; -fx-text-fill: white;" text="Login page" textFill="#5b4b4b">
+            <JFXButton fx:id="login" layoutX="102.0" layoutY="279.0" onAction="#Switch1" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: #130E0A; -fx-border-radius: 200; -fx-border-color: #070000; -fx-background-radius: 200; -fx-text-fill: white;" text="Login page" textFill="#5b4b4b">
                 <font>
                     <Font size="14.0" />
                 </font>
@@ -35,7 +35,7 @@
   
         </children>
     </AnchorPane>
-    <JFXButton fx:id="submit" layoutX="419.0" layoutY="285.0" onAction="#submit" prefHeight="32.0" prefWidth="91.0" style="-fx-background-color: #300d33; -fx-border-radius: 200; -fx-border-color: #070000; -fx-background-radius: 200; -fx-text-fill: white;" text="Submit" textFill="#5b4b4b">
+    <JFXButton fx:id="submit" layoutX="419.0" layoutY="285.0" onAction="#submit" prefHeight="32.0" prefWidth="91.0" style="-fx-background-color: #130E0A; -fx-border-radius: 200; -fx-border-color: #070000; -fx-background-radius: 200; -fx-text-fill: white;" text="Submit" textFill="#5b4b4b">
         <font>
             <Font size="14.0" />
         </font>

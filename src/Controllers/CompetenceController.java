@@ -6,6 +6,7 @@
 package Controllers;
 
 import Models.Competence;
+import Models.Variable;
 import Services.ServiceCompetence;
 import com.jfoenix.controls.JFXButton;
 import utils.MyConnection;
@@ -79,6 +80,7 @@ public class CompetenceController implements Initializable {
        Competence c =new Competence();
        c.setTitre(tftitre.getText());
        c.setDomaine(tfdomaine.getText());
+      
          sc.Addcom(c);
        TrayNotification tray = new TrayNotification("", "Competence ajoutée avec succes ", NotificationType.SUCCESS);
 

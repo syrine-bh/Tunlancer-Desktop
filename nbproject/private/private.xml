@@ -3,9 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Services/ServiceUser.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/LoginAdminViewController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/StatController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/GUI/LoginAdminView.fxml</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/UsersController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/InscriptionController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/Bcrypt.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/SelfPController.java</file>
             <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/LoginController.java</file>
-            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/tunlancer/TunlancerDesktop.java</file>
-            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/GUI/AdminController.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Models/Crypt.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Models/SendMessage.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Services/ServiceCompetence.java</file>
+            <file>file:/C:/Users/asus/Desktop/Tunlancer-Desktop/src/Controllers/HomePageHolderController.java</file>
         </group>
     </open-files>
 </project-private>

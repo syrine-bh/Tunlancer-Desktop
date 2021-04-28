@@ -36,7 +36,7 @@ public class TunlancerDesktop extends Application {
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
         
-            Parent root = FXMLLoader.load(getClass().getResource("/GUI/login.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("/GUI/LoginAdminView.fxml"));
         
         Scene scene = new Scene(root);
         

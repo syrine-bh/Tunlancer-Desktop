@@ -8,6 +8,7 @@ package Services;
 
 import Models.Competence;
 import Interfaces.IServiceCompetence;
+import Models.Variable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +31,8 @@ import utils.MyConnection;
  * @author asus
  */
 public class ServiceCompetence implements IServiceCompetence {
+
+    
      @FXML
     private TextField tfid;
     @FXML
@@ -40,18 +43,30 @@ public class ServiceCompetence implements IServiceCompetence {
     @FXML
     private TextField tfuserid1;
     Connection cnx;
+     private static ServiceCompetence ExService;
     
-    public ServiceCompetence(){
-      cnx = MyConnection.getInstance().getConnection();
+  //  public ServiceCompetence(){
+    //  cnx = MyConnection.getInstance().getConnection();
   
+   // }
+
+    /**
+     *
+     */
+    public ServiceCompetence() {
+        super();
     }
+
     
+     
      @Override
     public void Addcom(Competence c) {
              try {
         String query = "insert into Competence (titre,domaine)"
                 + " values(?,?)";
         PreparedStatement preparedStatement = cnx.prepareStatement(query);
+       //  preparedStatement.setInt(1, c.getUser_id());
+       
         preparedStatement.setString(1, c.getTitre());
         preparedStatement.setString(2, c.getDomaine());
        
@@ -65,8 +80,14 @@ public class ServiceCompetence implements IServiceCompetence {
             c = (Competence) get(c);
      
     } 
-    
 
+     ResultSet rs;
+    
+      @Override
+    public List<Competence> getAll()  {
+        return null;
+	
+    }
     @Override
     public List <Competence> showcomp() {
         List<Competence> Comp = new ArrayList<>();
@@ -148,11 +169,44 @@ public class ServiceCompetence implements IServiceCompetence {
         }    }
 
     
-    
+     public static ServiceCompetence getInstance() {
+        if (ExService == null) {
+            return ExService = new ServiceCompetence();
+        }
+        return ExService;
+    }
+
      
             
         
-      
+  public List<Competence> findAll(int id){
+        List comp= new ArrayList();
+        
+        String sql ="SELECT * FROM competence where `user_id`= "+ id;
+       
+        
+        try{
+         PreparedStatement preparedStatement = cnx.prepareStatement(sql);
+        ResultSet result = preparedStatement.executeQuery(sql);
+        while( result.next()){
+           
+	 Competence ex =new Competence();
+
+          ex.setId(result.getInt("id"));
+            ex.setTitre(result.getString("titre"));
+
+            ex.setDomaine(result.getString("domine"));
+
+	 
+               comp.add(ex);
+               
+        }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return comp;
+    }    
 
    
 

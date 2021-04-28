@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane fx:id="mainAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="748.0" prefWidth="1272.0" styleClass="regular_button" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OtherProfileController">
+   <children>
+      <AnchorPane fx:id="couverture" layoutX="-2.0" layoutY="46.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1272.0" style="-fx-background-color: lightgray;">
+         <children>
+           
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-3.0" layoutY="-52.0" prefHeight="327.0" prefWidth="1272.0" style="-fx-background-color: lightgray;">
+         <effect>
+            <DropShadow height="29.71" radius="6.9275" spread="0.16" width="0.0" />
+         </effect>
+         <children>
+            <ImageView fx:id="coverImage" fitHeight="249.0" fitWidth="1272.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/css/cov.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D height="300.0" width="1550.0" />
+               </viewport>
+            </ImageView>
+            <AnchorPane layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="1272.0" style="-fx-background-color: #4b4948;">
+               <children>
+                  <VBox alignment="CENTER_LEFT" layoutX="210.0" layoutY="18.0" prefHeight="15.0" prefWidth="21.0">
+                     <children>
+                        <ImageView fitHeight="13.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/css/en%20ligne.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <Label fx:id="nameLabel" layoutX="231.0" layoutY="11.0" text="Rihab Haddad" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="addressLabel" layoutX="420.0" layoutY="16.0" text="Tunisie" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="20.0" layoutY="-50.0" prefHeight="119.0" prefWidth="126.0" />
+                  <AnchorPane id="profile_image_pane" fx:id="profileImgPane" layoutX="26.0" layoutY="-62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="135.0" AnchorPane.topAnchor="-62.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="142.0" layoutX="-8.0" layoutY="-21.0" onMouseClicked="#showProfilePic" pickOnBounds="true" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-21.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <JFXButton buttonType="RAISED" layoutX="1165.0" layoutY="11.0" onAction="#Edit" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #eddaee;" text="Modifier" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Button layoutX="172.0" layoutY="10.0" mnemonicParsing="false" onAction="#AjouterPic" prefHeight="25.0" prefWidth="30.0" text="AjouterPic" />
+               </children>
+               <effect>
+                  <DropShadow height="1.0" radius="0.0" width="0.0" />
+               </effect>
+            </AnchorPane>
+            <ImageView fx:id="changerC" fitHeight="30.0" fitWidth="38.0" layoutX="1187.0" layoutY="236.0" onMouseClicked="#changerCover" opacity="0.38" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/css/3901.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="44.0" layoutY="392.0" minHeight="-Infinity" prefHeight="25.0" prefWidth="1449.0">
+         <children>
+            <AnchorPane layoutX="69.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="211.0" prefWidth="87.0" styleClass="paragraph_container" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="1311.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="profile_image_pane" fx:id="profileImgPane2" layoutX="32.0" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="142.0">
+         <children>
+            <ImageView fx:id="profileImage" fitHeight="150.0" fitWidth="149.0" layoutX="-10.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/css/rihab.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="101.0" layoutY="71.0" onMouseClicked="#AjouterPic" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/css/3901.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="23.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="409.0" styleClass="paragraph_container" stylesheets="@../resources/css/ProfileStyleSheet.css" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="840.0" AnchorPane.topAnchor="330.0">
+         <children>
+            <Label layoutX="22.0" layoutY="14.0" styleClass="paragraph_title" text="A Propos" AnchorPane.leftAnchor="22.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="aboutTextarea" layoutX="22.0" layoutY="58.0" prefHeight="59.0" prefWidth="346.0" visible="false" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextArea>
+            <Text fx:id="aboutText" fill="#3c3b3b" layoutX="32.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Un professionnel talentueux avec une formation universitaire en informatique et une expérience éprouvée en développement commercial en tant que développeur C ++ " textAlignment="JUSTIFY" wrappingWidth="346.0000057220459" AnchorPane.bottomAnchor="23.3818359375" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="31.9999942779541" AnchorPane.topAnchor="46.8134765625">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="341.0" layoutY="13.0" onMouseClicked="#editAbout" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/css/edit.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TabPane layoutX="23.0" layoutY="489.0" prefHeight="185.0" prefWidth="416.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Profil">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="218.0" prefWidth="473.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="213.0">
+                                             <children>
+                                                <Label text="Sexe">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="119.0">
+                                             <children>
+                                                <Label fx:id="tfsexe" text="Femme">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="233.0">
+                                             <children>
+                                                <Label minWidth="-Infinity" prefHeight="22.0" prefWidth="140.0" text="Age">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <Label fx:id="tfage" prefHeight="17.0" prefWidth="24.0" text="23">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="110.0" prefHeight="25.0" prefWidth="307.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="208.0">
+                                             <children>
+                                                <Label prefHeight="19.0" prefWidth="131.0" text="Télephone">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <VBox fx:id="date" prefHeight="200.0" prefWidth="100.0" />
+                                                <Label fx:id="telelabel" minWidth="-Infinity" prefHeight="20.0" prefWidth="142.0" text="26203571">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="211.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="243.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="311.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="411.0" prefHeight="69.0" prefWidth="280.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="95.0" prefWidth="243.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="510.0" layoutY="10.0" prefHeight="559.0" prefWidth="470.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="480.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox prefHeight="559.0" prefWidth="443.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="367.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="268.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="196.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="339.0" prefHeight="100.0" prefWidth="367.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="268.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="196.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="377.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="338.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="265.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="189.0" prefHeight="100.0" prefWidth="367.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="268.0" />
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="196.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="367.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="196.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="367.0">
+                                       <children>
+                                          <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="196.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Certifications">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <VBox fx:id="answersVBox" spacing="20.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+         <styleClass>
+            <String fx:value="tab_pane" />
+            <String fx:value="paragraph_container" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@style/ProfileStyleSheet.css" />
+            <URL value="@style/FomStyleSheet.css" />
+            <URL value="@../resources/css/ProfileStyleSheet.css" />
+         </stylesheets>
+      </TabPane>
+      <WebView fx:id="webimg" layoutX="119.0" layoutY="682.0" prefHeight="52.0" prefWidth="77.0" />
+      <TabPane layoutX="848.0" layoutY="306.0" prefHeight="386.0" prefWidth="346.0" stylesheets="@style/ProfileStyleSheet.css" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Experience">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="345.0">
+                     <children>
+                        <AnchorPane layoutX="60.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="311.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="17.0" />
+                        <ScrollPane fx:id="photoScrollPane1" fitToWidth="true" hbarPolicy="NEVER" layoutX="33.0" layoutY="55.0" prefHeight="211.0" prefWidth="288.0">
+                           <content>
+                              <VBox fx:id="photosVBox1" alignment="CENTER" spacing="40.0">
+                                 <padding>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <VBox fx:id="photosVBox1" alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="40.0">
+                           <padding>
+                              <Insets bottom="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <Label layoutX="106.0" layoutY="94.0" text="Employeur">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="employeur11" layoutX="207.0" layoutY="94.0" text="Label">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="106.0" layoutY="139.0" text="Poste">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="poste11" layoutX="207.0" layoutY="137.0" text="Label">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="107.0" layoutY="185.0" text="Periode">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="periode11" layoutX="204.0" layoutY="182.0" text="Label">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXMasonryPane fx:id="listEvenements1" layoutX="111.0" layoutY="88.0" prefHeight="122.0" prefWidth="228.0" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Formation">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="-3.0" prefHeight="319.0" prefWidth="278.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <VBox fx:id="answersVBox1" prefHeight="41.0" prefWidth="243.0" spacing="20.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                                 <children>
+                                    <TableView id="tableview" fx:id="table1" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#getSelectedProjet" prefHeight="150.0" prefWidth="260.0" stylesheets="@../../../../Downloads/SmartStartFinal/SmartStart1/src/view/style/QuestionStyle.css">
+                                       <columns>
+                                          <TableColumn fx:id="titre3tab" prefWidth="90.0" text="Titre" />
+                                          <TableColumn fx:id="Secteurtab" prefWidth="85.0" text="Secteur" />
+                                          <TableColumn fx:id="periode3tab" prefWidth="102.0" text="Periode" />
+                                       </columns>
+                                       <styleClass>
+                                          <String fx:value="tab-header-area" />
+                                          <String fx:value="tab-header-background" />
+                                       </styleClass>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <Button id="button" fx:id="bt_suppP" layoutX="216.0" layoutY="191.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#supprimerProjet" prefHeight="25.0" prefWidth="51.0" style="-fx-font-weight: bold; -fx-font-size: 10; -fx-border-width: 0;" styleClass="regular_button" stylesheets="@../../../../Downloads/SmartStartFinal/SmartStart1/src/view/style/QuestionStyle.css" text="Delete" />
+                        <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="183.0" layoutY="190.0" onMouseClicked="#modifierProjet" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/SmartStartFinal/SmartStart1/src/view/assets/icons/edit.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <TextField fx:id="mtitrep" layoutX="8.0" layoutY="239.0" prefHeight="25.0" prefWidth="132.0" />
+                        <TextField fx:id="msecteurp" layoutX="149.0" layoutY="238.0" prefHeight="25.0" prefWidth="119.0" />
+                        <TextField fx:id="mperiodep" layoutX="66.0" layoutY="284.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+         <styleClass>
+            <String fx:value="tab_pane" />
+            <String fx:value="paragraph_container" />
+         </styleClass>
+      </TabPane>
+      <AnchorPane layoutX="485.0" layoutY="306.0" prefHeight="409.0" prefWidth="331.0" styleClass="paragraph_container" stylesheets="@../../../../Downloads/SmartStartFinal/SmartStart1/src/view/style/ProfileStyleSheet.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="38.0" layoutY="13.0" prefHeight="58.0" prefWidth="201.0" spacing="30.0" stylesheets="@../../../../Downloads/SmartStartFinal/SmartStart1/src/view/style/ProfileStyleSheet.css">
+               <children>
+                  <Label text="Competence" textFill="#e193e1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <GridPane layoutX="59.0" layoutY="123.0" prefHeight="204.0" prefWidth="200.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </children>
+      </AnchorPane>
+     
+   </children>
+   <effect>
+      <DisplacementMap>
+         <mapData>
+            <FloatMap />
+         </mapData>
+      </DisplacementMap>
+   </effect>
+</AnchorPane>

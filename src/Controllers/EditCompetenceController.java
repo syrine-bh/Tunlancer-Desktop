@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import Models.Variable;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.Connection;
@@ -52,7 +53,8 @@ public class EditCompetenceController implements Initializable {
     PreparedStatement ps = cnx.prepareStatement(query);
     ps.setString(1, tftitre1.getText());
     ps.setString(2, tfdomaine1.getText());
-     ps.setInt(3,(Integer.parseInt( id.getText())));
+    ps.setInt(3,(Integer.parseInt( id.getText())));
+    
     ps.executeUpdate();
     System.out.println("Modifier avec succees !");
     TrayNotification tray = new TrayNotification("", "Competence modifiée avec succes ", NotificationType.SUCCESS);

@@ -16,6 +16,7 @@ import java.util.List;
      public List <Competence> showcomp();
      public void updatecom(Competence c);
      public void deletecomm(Competence c);
+      public List<Competence> getAll();
      
       
 }

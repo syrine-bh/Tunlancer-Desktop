@@ -1,39 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="704.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatController">
+<AnchorPane id="AnchorPane" prefHeight="607.0" prefWidth="1331.0" style="-fx-background-radius: 1em; -fx-background-color: linear-gradient(to right top, #f4c4f3 , #F2D7D5);" stylesheets="@../../resources/css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.StatController">
    <children>
-      <Pane fx:id="paneview" layoutX="267.0" layoutY="235.0" prefHeight="273.0" prefWidth="279.0" />
-      <AnchorPane prefHeight="704.0" prefWidth="189.0" style="-fx-background-color: #e7dbdb;">
+      <AnchorPane fx:id="pageHolder" layoutY="-20.0" prefHeight="657.0" prefWidth="1118.0" style="-fx-background-color: #FFFEFB; -fx-background-radius: 1em;" AnchorPane.bottomAnchor="-7.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="-20.0">
          <children>
-            <Button layoutY="208.0" mnemonicParsing="false" onAction="#godash" opacity="0.55" prefHeight="47.0" prefWidth="189.0" text="Dashboard">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="user" layoutY="255.0" mnemonicParsing="false" onAction="#gouser" opacity="0.5" prefHeight="47.0" prefWidth="189.0" text="Gestion Utilisateurs">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
+            <StackPane fx:id="contentPane" layoutX="68.0" layoutY="42.0" prefHeight="356.0" prefWidth="369.0">
+               <children>
+                  <PieChart fx:id="pieChart" prefHeight="335.0" prefWidth="354.0" />
+               </children>
+            </StackPane>
+            <AnchorPane layoutX="548.0" layoutY="62.0" prefHeight="405.0" prefWidth="449.0">
+               <children>
+                  <StackPane fx:id="contentPane1" layoutX="36.0" layoutY="-18.0" prefHeight="325.0" prefWidth="355.0">
+                     <children>
+                        <PieChart fx:id="pieChart1" prefHeight="320.0" prefWidth="343.0" />
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+            <BarChart fx:id="bar" layoutX="234.0" layoutY="459.0" prefHeight="221.0" prefWidth="392.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children></AnchorPane>
+      <Label fx:id="label" layoutX="23.0" layoutY="14.0" prefHeight="65.0" prefWidth="189.0" style="-fx-text-fill: #000000; -fx-font-size: 35;" styleClass="text" stylesheets="@Resources/css/main.css" text="Tunlancer" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="Century Gothic Bold" size="68.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.0714285714285714" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color blue="0.47843137383461" green="0.3294117748737335" red="0.07450980693101883" />
+                     </color></Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color blue="0.47843137383461" green="0.3294117748737335" red="0.07450980693101883" />
+                     </color></Stop>
+                  <Stop offset="0.019157088122605363">
+                     <color>
+                        <Color blue="0.47843137383461" green="0.3294117748737335" red="0.07450980693101883" />
+                     </color></Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color blue="0.1559332311153412" green="0.15789473056793213" red="0.14108186960220337" />
+                     </color></Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane fx:id="slider" cache="true" cacheHint="SPEED" layoutX="1.0" layoutY="128.0" prefHeight="48.0" prefWidth="189.0" style="-fx-background-color: rgba(255, 254, 251, 0.2);" AnchorPane.leftAnchor="1.0">
+         <children>
+            <Pane layoutX="-1.0" prefHeight="39.0" prefWidth="6.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="47.0" fitWidth="50.0" layoutX="841.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/css/rihab.jpeg" />
-         </image>
-      </ImageView>
-      <Label layoutX="703.0" layoutY="20.0" prefHeight="35.0" prefWidth="121.0" text="Rihab Haddad">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
+      <VBox layoutX="23.0" layoutY="140.0" prefHeight="490.0" prefWidth="178.0" spacing="40.0">
+         <children>
+            <AnchorPane onMouseClicked="#dashboardPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="36.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Dashboard" textFill="#13547a">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="TH_LARGE" layoutX="2.0" layoutY="23.0" size="20" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#usersPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="39.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Users">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="USERS" layoutX="2.0" layoutY="22.0" size="20" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#offresPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="38.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Offres" textFill="#13547a">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="LIST" layoutX="2.0" layoutY="23.0" size="20" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#recrutementsPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="38.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Recrutements" textFill="#13547a">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="BOOK" layoutX="2.0" layoutY="23.0" size="20" />
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#concoursPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="38.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Concours" textFill="#13547a">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="22.0" fitWidth="28.0" layoutY="5.0">
+                     <image>
+                        <Image url="@../../../../../../Downloads/vippng.com-trophy-icon-png-4973304.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#forumsPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="38.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Forums" textFill="#13547a">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="-6.0" layoutY="-1.0">
+                     <image>
+                        <Image url="@../../../../../../Downloads/vippng.com-messaging-icon-png-126390.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#publicationsPageAction" prefHeight="29.0" prefWidth="128.0" style="-fx-cursor: hand;">
+               <children>
+                  <Label layoutX="38.0" style="-fx-font-size: 20px; -fx-text-fill: #000000;" styleClass="text" stylesheets="@Resources/css/main.css" text="Publications">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView glyphName="STICKY_NOTE" layoutX="2.0" layoutY="23.0" size="20" text="" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

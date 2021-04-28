@@ -8,9 +8,11 @@ package Controllers;
 import Models.Competence;
 import Models.Users;
 import Services.ServiceCompetence;
+import Services.ServiceUser;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.twilio.rest.serverless.v1.service.environment.Variable;
+import java.awt.image.BufferedImage;
 
 import javafx.scene.image.Image;
 
@@ -38,6 +40,7 @@ import java.util.logging.Logger;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,11 +69,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.commons.io.FileUtils;
 import utils.MyConnection;
 
 /**
@@ -83,6 +88,7 @@ public class SelfPController implements Initializable {
     private AnchorPane mainAnchorPane;
     @FXML
     private ImageView coverImage; 
+    @FXML
     private ImageView profileImage;
     @FXML
     private AnchorPane profileImgPane;
@@ -91,8 +97,6 @@ public class SelfPController implements Initializable {
     @FXML
     private Label addressLabel;
     @FXML
-    private Label heightLabel;
-    @FXML
     private VBox answersVBox;
       @FXML
     private VBox date;
@@ -100,23 +104,11 @@ public class SelfPController implements Initializable {
     private TextArea aboutTextarea;
     @FXML
     private Text aboutText;
-    @FXML
-    private ScrollPane photoScrollPane;
-    @FXML
-    private VBox photosVBox;
-    @FXML
-    private Label employeur;
-    @FXML
-    private Label poste;
-    @FXML
-    private Label periode;
  Connection cnx;
     
      ServiceCompetence sc = new ServiceCompetence();
    
 
-    @FXML
-    private TextField txt_id;
     private Users Users;
     String  path="C:\\wamp\\www\\uploads\\images\\";
     @FXML
@@ -135,7 +127,49 @@ private AnchorPane profileImgPane2;
     @FXML
     private TableColumn<Competence, String> coldomaine;
     @FXML
-    private ListView<String> lvcom;
+    private Label tfsexe;
+    @FXML
+    private Label tfage;
+    @FXML
+    private Label telelabel;
+    @FXML
+    private WebView webimg;
+    @FXML
+    private VBox answersVBox1;
+    @FXML
+    private TableView<?> table1;
+    @FXML
+    private TableColumn<?, ?> titre3tab;
+    @FXML
+    private TableColumn<?, ?> Secteurtab;
+    @FXML
+    private TableColumn<?, ?> periode3tab;
+    @FXML
+    private Button bt_suppP;
+    @FXML
+    private ScrollPane photoScrollPane;
+    @FXML
+    private VBox photosVBox;
+    @FXML
+    private Label employeur;
+    @FXML
+    private Label poste;
+    @FXML
+    private Label periode;
+    @FXML
+    private ImageView editex;
+    @FXML
+    private TableView<?> table;
+    @FXML
+    private TableColumn<?, ?> employeurtab;
+    @FXML
+    private TableColumn<?, ?> postetab;
+    @FXML
+    private TableColumn<?, ?> periodetab;
+    @FXML
+    private Button bt_supp;
+    @FXML
+    private TextField txt_id;
          public ImageView getProfileImage() {
         return profileImage;
     }
@@ -151,13 +185,50 @@ private AnchorPane profileImgPane2;
  showcom();
     }
     
+     private void populateFields(){
+        try {
+            
+              //     String age = "" + ((new Date()).getYear() - fosuser.getBirth_date().getYear());
+            //ageLabel.setText(age);    
+            
+         //   nameLabel.setText(Variable.getUsers().getFirstname() + " " + Variable.getUsers().getLastname());
+          //  addressLabel.setText(Variable.getgetUsers().getPays());
+           
+//           bdLabel.setText(new SimpleDateFormat("dd MM yyyy", Locale.ENGLISH).format(fosuser.getBirth_date()));
+          //  aboutText.setText(Variable.getUsers().getDescription());
+                     
+      
+        }catch (Exception ex){
+  Logger.getLogger(SelfPController.class.getName()).log(Level.SEVERE, null, ex);        }
+    }
     
     
-    
-    
+    FileChooser fc = new FileChooser();
+    File selectedFile;
      @FXML
     private void changerCover (MouseEvent event) throws SQLException, IOException {
-      
+       File dest=new File("C:\\wamp\\www\\uploads\\images");
+        
+        fc.setInitialDirectory(new File("C:\\"));
+        selectedFile = fc.showOpenDialog(null);
+        if(selectedFile!=null){
+            
+        FileUtils.copyFileToDirectory(selectedFile, dest);
+        
+        File newFile = new File("C:\\wamp\\www\\uploads\\images\\"+selectedFile.getName());
+        
+        FileInputStream input = new FileInputStream(newFile);
+        
+      ServiceUser   us = new ServiceUser();
+        //  us.modifierPhotoCover(Variable.getUsers().getId(), selectedFile.getName());
+           System.out.println("Photo de couverture");
+           
+           File file2 = new File("C:\\wamp\\www\\uploads\\images\\"+selectedFile.getName());
+        Image image = new Image(file2.toURI().toString());
+        Image image3 = new Image(file2.toURI().toString());
+            
+            coverImage.setImage(image3);
+       }        
         
        }   
     
@@ -174,9 +245,21 @@ private AnchorPane profileImgPane2;
        @FXML
     private void editAbout(MouseEvent event) {
        
+        aboutTextarea.setText(aboutText.getText());
+        aboutText.setVisible(false);
+        aboutTextarea.setVisible(true);
+        aboutTextarea.requestFocus();
     }
+       
     
-  
+    
+  private void updateAbout(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue){
+        if(!newPropertyValue){
+            aboutTextarea.setVisible(false);
+            aboutText.setVisible(true);
+            populateFields();
+        }
+    }
  
 
 
@@ -292,13 +375,91 @@ private AnchorPane profileImgPane2;
             System.err.println(ex.getMessage());
         }
         System.out.println( comp );
-       
+        //return annonce;
+        fxlist.setItems(comp);
+       // fxlist.setOrientation(Orientation.HORIZONTAL);
+       // fxlist.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+ 
+       //fxlist.getSelectionModel().selectIndices(1, 2);
+        // fxlist.setOrientation(Orientation.HORIZONTAL);
+        //
+       // tvannonce.setItems(annonce);
      }
-
+*/
  
   void setlist() {     
 
 
 
         }
+
+    @FXML
+    private void AjouterPic(ActionEvent event) {
+       try {
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/GUI/WebCamPreview.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(tableViewScene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SelfPController.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
+    
+
+    public BufferedImage buffImg;
+  public void setImg(BufferedImage imgg) throws IOException {
+
+        buffImg = imgg;
+        Image image = SwingFXUtils.toFXImage(imgg, null);
+        profileImage.setImage(image);
+        profileImage.setVisible(true);
+        profileImage.toFront();
+        
+        webimg.setVisible(false);
+        // cloudinary.uploader().upload("my_picture.jpg", ObjectUtils.emptyMap());
+        System.err.println(imgg);
+//changepic.fire();
+
+    }
+    @FXML
+    private void AjouterPic(MouseEvent event) {
+    }
+
+    @FXML
+    private void getSelectedProjet(MouseEvent event) {
+    }
+
+    @FXML
+    private void supprimerProjet(ActionEvent event) {
+    }
+
+    @FXML
+    private void modifierProjet(MouseEvent event) {
+    }
+
+    @FXML
+    private void affiche(MouseEvent event) {
+     ObservableList<Competence> Competence = showcomp();
+     
+     coltitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+     coldomaine.setCellValueFactory(new PropertyValueFactory<>("domaine"));
+     
+      
+    tvcomp.setItems(Competence);
+    }
+
+    @FXML
+    private void modifierExperience(MouseEvent event) {
+    }
+
+    @FXML
+    private void supprimerExperience(ActionEvent event) {
+    }
+
+    @FXML
+    private void modifierExperience2(MouseEvent event) {
+    }
 }

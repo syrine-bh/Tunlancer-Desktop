@@ -7,6 +7,7 @@ package Services;
 import Models.Users;
 import Interfaces.IServiceUser;
 import static Models.Crypt.getMd5;
+import com.google.zxing.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,6 +16,8 @@ import utils.MyConnection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tunlancer.TunlancerDesktop;
 
 
@@ -113,8 +116,31 @@ public class ServiceUser implements IServiceUser {
             System.out.println(ex.getMessage());
         }}    
 
-
-    
+    /**
+     *
+     * @param obj
+     * @return
+     * @throws SQLException
+     */
+    public Users getAdmin(Users obj) throws SQLException {
+        if (obj.getEmail() == null) return null;
+        String query = "Select * from users Where role =admin and email = '" + obj.getEmail() + "'";
+            PreparedStatement pst = MyConnection.getInstance().getConnection().prepareStatement(query); 
+         ResultSet rs = pst.executeQuery(query);
+        if (rs.next()) {
+            obj.setId(rs.getInt("id"));
+            obj.setNom(rs.getString("nom"));
+            obj.setPrenom(rs.getString("prenom"));
+            obj.setTel(rs.getInt("tel"));
+            obj.setEmail(rs.getString("email"));
+            obj.setpassword(rs.getString("password"));
+            obj.setPays(rs.getString("pays"));
+            obj.setAge(rs.getInt("age")); 
+            obj.setSexe(rs.getString("sexe")); 
+            return obj;
+        }
+        return null;
+    }
       @Override
     public int login(String email, String password) {
           Users user = null;
@@ -147,6 +173,7 @@ public class ServiceUser implements IServiceUser {
         }
     }
 
+    
      public int sex2(int e) throws SQLException {
         //int cl=getMonClubId(e);
         PreparedStatement pt=MyConnection.prepareStatement("select * from users where sexe=femme");
@@ -244,9 +271,30 @@ public class ServiceUser implements IServiceUser {
         }  
       return Users;
     }*/
-
+  public void modifierEtatEnabledFalse(int id){ 
+    try { 
+    String req = "UPDATE `users` SET `is_enabled`=? WHERE `id`=? ";
+PreparedStatement pst = MyConnection.getInstance().getConnection()
+                    .prepareStatement(req);
+    pst.setInt(1,0);
+    pst.setInt(2, id);
+        System.out.println("enable:"+1);
+    pst.executeUpdate(); 
+    } catch (SQLException ex) {
+     Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+         }        
+      }
+    
     @Override
     public void findByid(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getPassword() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getNom() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

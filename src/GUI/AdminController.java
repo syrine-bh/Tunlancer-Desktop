@@ -6,6 +6,8 @@
 package GUI;
 
 import Models.Users;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -14,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -33,6 +37,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import utils.MyConnection;
 
 /**
@@ -66,6 +73,9 @@ Connection cnx;
     private TextField tfrecherche;
     @FXML
     private ImageView affiche;
+    @FXML
+    private Button btnQr;
+     
     /**
      * Initializes the controller class.
      */
@@ -192,6 +202,51 @@ Connection cnx;
     }
 
 
+    
+    
+     @FXML
+    private void toExcel(ActionEvent event) throws SQLException, FileNotFoundException, IOException {
+                       Statement  ste = cnx.createStatement();
+                        ResultSet rs = ste.executeQuery("Select * from users");
+
+                         HSSFWorkbook wb = new HSSFWorkbook();
+                        HSSFSheet sheet = wb.createSheet("Liste des utilisateurs");
+                        HSSFRow rowhead = sheet.createRow((short) 0);
+                        rowhead.createCell((short) 0).setCellValue("id");
+                        rowhead.createCell((short) 1).setCellValue("Nom");
+                        rowhead.createCell((short) 2).setCellValue("Prenom");
+                        rowhead.createCell((short) 3).setCellValue("Email");
+                        rowhead.createCell((short) 4).setCellValue("Tel");
+                        rowhead.createCell((short) 5).setCellValue("Pays");
+                        rowhead.createCell((short) 6).setCellValue("Age");
+                        
+
+                        int index = 1;
+                        while (rs.next()) {
+
+                                HSSFRow row = sheet.createRow((short) index);
+                                row.createCell((short) 0).setCellValue(rs.getInt("id"));
+                                row.createCell((short) 1).setCellValue(rs.getString("Nom"));
+                                row.createCell((short) 2).setCellValue(rs.getString("Prenom"));
+                             
+                                row.createCell((short) 3).setCellValue(rs.getString("Email"));
+                                row.createCell((short) 4).setCellValue(rs.getInt("Tel"));
+                                row.createCell((short) 5).setCellValue(rs.getString("Pays"));
+                                row.createCell((short) 6).setCellValue(rs.getInt("Age"));
+                                      index++;
+                        }
+                        FileOutputStream fileOut = new FileOutputStream("C:\\Users\\asus\\Desktop\\Tunlancer-Desktop\\RapportUsers.xls");
+        try {
+            wb.write(fileOut);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                        fileOut.close();
+                        System.out.println("Data is saved in excel file.");
+                        rs.close();
+                        
+                
+}
     }
     
 
